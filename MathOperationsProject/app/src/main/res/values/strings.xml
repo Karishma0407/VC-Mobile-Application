@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MathOperationsProject</string>
+    <string name="input_string_edit_text_x">Please Enter Value of X</string>
+    <string name="input_string_edit_text_y">Please Enter Value of Y</string>
+    <string name="addition_text_view"></string>
+    <string name="subtraction_text_view"></string>
+    <string name="multiply_text_view"></string>
+    <string name="division_text_view"></string>
+    <string name="calculate_button">Calculate</string>
+</resources>
