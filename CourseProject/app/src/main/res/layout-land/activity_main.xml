@@ -40,5 +40,12 @@
         android:layout_height="70dp"
         android:text="@string/courseNext_button"
         />
+
+        <Button
+            android:id="@+id/course_detail_button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="@string/course_detail_button"
+            />
     </LinearLayout>
 </FrameLayout>

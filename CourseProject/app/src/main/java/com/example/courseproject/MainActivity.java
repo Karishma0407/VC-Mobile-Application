@@ -2,6 +2,7 @@ package com.example.courseproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView courseTotalFeesText_View;
     private Button courseTotalFees_Button;
     private Button courseNext_Button;
+    private Button course_detail_Button;
 
     private int currentIndex = 0;
     public static String TAG="Course Project";
@@ -25,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Should be retreived from the database
+        Course.credits=3;
+
+        //Should be retrieved from the database
         Course courseRecord1 = new Course("MIS 101", "Intro to Info System", 140);
         Course courseRecord2 = new Course("MIS 301", "System Analysis", 35);
         Course courseRecord3 = new Course("MIS 441", "Database Management", 12);
@@ -73,6 +77,24 @@ public class MainActivity extends AppCompatActivity {
                         " " + all_courses[currentIndex].getCourse_name());
             }
         });
+
+        //Get the view of course_detail_button
+        course_detail_Button = (Button) findViewById(R.id.course_detail_button);
+        course_detail_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String courseId = all_courses[currentIndex].getCourse_no();
+                String courseName = all_courses[currentIndex].getCourse_name();
+                int courseMaxEnrl = all_courses[currentIndex].getMax_enrl();
+                int courseCredits = Course.credits;
+                //calling the coding Extra
+                Intent intent = CourseActivity.newIntent (MainActivity.this, courseId, courseName, courseMaxEnrl, courseCredits);
+                startActivity(intent);
+
+            }
+        });
+
     }   //end of onCreate()
 
     @Override
