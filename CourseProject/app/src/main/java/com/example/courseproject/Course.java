@@ -6,6 +6,12 @@ public class Course {
     private int max_enrl;
     public static int credits;
 
+    public Course() {
+        this.course_no = "";
+        this.course_name = "";
+        this.max_enrl = 0;
+    }
+
     public Course(String course_no, String course_name, int max_enrl) {
         this.course_no = course_no;
         this.course_name = course_name;

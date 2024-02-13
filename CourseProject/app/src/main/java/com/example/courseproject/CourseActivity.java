@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ public class CourseActivity extends AppCompatActivity {
     private EditText courseNameEditText;
     private EditText courseMaxEnrlEditText;
     private EditText courseCreditsEditText;
+    private Button courseUpdateButton;
 
 
     //Define all KEYS
@@ -61,5 +64,44 @@ public class CourseActivity extends AppCompatActivity {
         //Get the view of course_credits_edit_text
         courseCreditsEditText = (EditText) findViewById(R.id.course_credits_edit_text);
         courseCreditsEditText.setText(courseCreditsRetrieve+"");
+
+        //Get the view of course_update_button
+        courseUpdateButton = (Button) findViewById(R.id.course_update_button);
+        courseUpdateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Update database
+
+                //Coding updated course info as extra parameter
+                setCourseUpdateCodedResult(courseIdEditText.getText().toString(),
+                        courseNameEditText.getText().toString(),
+                        Integer.parseInt(courseMaxEnrlEditText.getText().toString()),
+                        Integer.parseInt(courseCreditsEditText.getText().toString()));
+            }
+        });
+    } //end of onCreate()
+
+    //Coding Extra data Intent from child to parent Activity
+    private void setCourseUpdateCodedResult(String course_id, String course_name,
+                                            int course_max_enrl, int course_credits)
+    {
+        Intent dataIntent = new Intent();
+        dataIntent.putExtra(EXTRA_COURSE_NO, course_id);
+        dataIntent.putExtra(EXTRA_COURSE_NAME, course_name);
+        dataIntent.putExtra(EXTRA_COURSE_MAX_ENRL, course_max_enrl);
+        dataIntent.putExtra(EXTRA_COURSE_CREDITS, course_credits);
+        setResult(RESULT_OK, dataIntent);
     }
+
+    //Decoding Extra data Intent in ParentActivity
+    public static Course sendMessageCourseUpdateResult(Intent resultIntent)
+    {
+        Course courseUpdateInfo = new Course();
+        courseUpdateInfo.setCourse_no(resultIntent.getStringExtra(EXTRA_COURSE_NO));
+        courseUpdateInfo.setCourse_name(resultIntent.getStringExtra(EXTRA_COURSE_NAME));
+        courseUpdateInfo.setMax_enrl(resultIntent.getIntExtra(EXTRA_COURSE_MAX_ENRL,0));
+        courseUpdateInfo.credits = resultIntent.getIntExtra(EXTRA_COURSE_CREDITS,0);
+        return courseUpdateInfo;
+    }
+
 }

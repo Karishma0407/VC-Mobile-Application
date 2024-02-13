@@ -1,7 +1,12 @@
 package com.example.courseproject;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public static String TAG="Course Project";
     public static String KEY_INDEX="index";
 
+    public Course[] all_courses;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Course courseRecord7 = new Course("MIS 651", "Advanced Java", 30);
 
         //Data structure: Array of Objects
-        Course[] all_courses = new Course[]{courseRecord1, courseRecord2, courseRecord3, courseRecord4,
+        all_courses = new Course[]{courseRecord1, courseRecord2, courseRecord3, courseRecord4,
                 courseRecord5, courseRecord6, courseRecord7} ;
 
         if(savedInstanceState != null)
@@ -84,18 +91,51 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //Start new Activity CourseActivity
+                //The first approach is to call startActivity as Unidirectional Communication
+                //Only use when sending data from parent activity to child activity
                 String courseId = all_courses[currentIndex].getCourse_no();
                 String courseName = all_courses[currentIndex].getCourse_name();
                 int courseMaxEnrl = all_courses[currentIndex].getMax_enrl();
                 int courseCredits = Course.credits;
                 //calling the coding Extra
                 Intent intent = CourseActivity.newIntent (MainActivity.this, courseId, courseName, courseMaxEnrl, courseCredits);
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityIntent.launch(intent);
 
             }
         });
 
     }   //end of onCreate()
+
+    ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>(){
+                @Override
+                public void onActivityResult(ActivityResult result){
+                    //Decoding of extra data Intent
+                    if(result.getResultCode() != Activity.RESULT_OK)
+                    {
+                        return;
+                    }else
+                    {
+                        Course courseUpdateinfo = CourseActivity.sendMessageCourseUpdateResult(result.getData());
+                        courseText_View.setText("Course: " + courseUpdateinfo.getCourse_no() +
+                                " " + courseUpdateinfo.getCourse_name());
+
+                        Toast.makeText(MainActivity.this, "Updated Course: " +
+                                "Course: " + courseUpdateinfo.getCourse_no() +
+                                " " + courseUpdateinfo.getCourse_name(),
+                                Toast.LENGTH_SHORT).show();
+                        //Update the array element
+                        all_courses[currentIndex].setCourse_no(courseUpdateinfo.getCourse_no());
+                        all_courses[currentIndex].setCourse_name(courseUpdateinfo.getCourse_name());
+                        all_courses[currentIndex].setMax_enrl(courseUpdateinfo.getMax_enrl());
+                        all_courses[currentIndex].credits = courseUpdateinfo.credits;
+                    }
+                }
+            }
+    );
 
     @Override
     public void onStart(){
