@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/temperature_text_view"
+        android:layout_width="272dp"
+        android:layout_height="52dp"
+        android:text="@string/temperature_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168" />
+
+    <EditText
+        android:id="@+id/input_string_edit_text"
+        android:layout_width="313dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/input_string_edit_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/temperature_text_view"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/temperature_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/temperature_text_view"
+        app:layout_constraintVertical_bias="0.137" />
+
+    <TextView
+        android:id="@+id/output_string_text_view"
+        android:layout_width="213dp"
+        android:layout_height="40dp"
+        android:text="@string/output_string_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_string_edit_text"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/input_string_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/input_string_edit_text"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/convert_temp_button"
+        android:layout_width="235dp"
+        android:layout_height="53dp"
+        android:text="@string/convert_temp_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/output_string_text_view"
+        app:layout_constraintStart_toStartOf="@+id/output_string_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/output_string_text_view"
+        app:layout_constraintVertical_bias="0.218" />
+</androidx.constraintlayout.widget.ConstraintLayout>

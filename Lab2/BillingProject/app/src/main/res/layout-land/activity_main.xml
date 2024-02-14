@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="346dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/client_id_edit_view"
+        android:layout_width="260dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/client_id_edit_view"
+        android:layout_gravity="top|left"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/client_name_edit_view"
+        android:layout_width="260dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/client_name_edit_view"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/product_name_edit_view"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/product_name_edit_view"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/product_price_edit_view"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/product_price_edit_view"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/product_quantity_edit_view"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/product_quantity_edit_view"
+        android:layout_marginBottom="12dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="373dp"
+        android:layout_height="313dp"
+        android:layout_gravity="top|right"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/total_billing_text_view"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/total_billing_text_view" />
+
+        <TextView
+            android:id="@+id/record_billing_text_view"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:text="@string/record_billing_text_view" />
+
+        <Button
+            android:id="@+id/total_input_billing_button"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:text="@string/total_input_billing_button" />
+
+        <Button
+            android:id="@+id/total_record_billing_button"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/total_record_billing_button" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="373dp"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prev_billing_button"
+            android:layout_width="160dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/prev_billing_button" />
+
+        <Button
+            android:id="@+id/next_billing_button"
+            android:layout_width="160dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/next_billing_button" />
+    </LinearLayout>
+
+</FrameLayout>
