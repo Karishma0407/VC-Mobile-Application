@@ -79,7 +79,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="342dp"
-        android:layout_height="254dp"
+        android:layout_height="264dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/product_quantity_edit_view"
@@ -93,7 +93,7 @@
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/total_billing_text_view" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/record_billing_text_view" />
 
         <Button
@@ -109,7 +109,6 @@
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="12dp"
             android:text="@string/total_input_billing_button" />
 
         <Button
@@ -118,6 +117,14 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/total_record_billing_button" />
+
+        <Button
+            android:id="@+id/billing_details_button"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/billing_details_button" />
+
     </LinearLayout>
 
     <LinearLayout

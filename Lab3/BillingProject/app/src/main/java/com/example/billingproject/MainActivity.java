@@ -1,7 +1,13 @@
 package com.example.billingproject;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView recordBillingText_view;
     private Button totalInputBilling_button;
     private Button totalRecordBilling_button;
+    private Button billingDetails_button;
     private Button prev_button;
     private Button next_button;
 
     private int currentIndex = 0;
     public static  String TAG = "Billing Project";
     public static String KEY_INDEX = "index";
+
+    public Billing[] all_billingRecords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Billing billingRecord3 = new Billing(113, "Samson Amina", "KeyUSB", 14.99, 2);
 
         //Data Structure: Array of Objects
-        Billing[] all_billingRecords = new Billing[]{billingRecord1, billingRecord2, billingRecord3};
+        all_billingRecords = new Billing[]{billingRecord1, billingRecord2, billingRecord3};
 
         if (savedInstanceState != null) {
             currentIndex = savedInstanceState.getInt(KEY_INDEX);
@@ -122,7 +131,66 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        //Get the view of billing_details_button
+        billingDetails_button = (Button) findViewById(R.id.billing_details_button);
+        billingDetails_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+/*
+                //Start new Activity BillingActivity
+                //The first approach is to call startActivity as Unidirectional Communication
+                //Only use when sending data from parent activity to child activity
+                int clientId = all_billingRecords[currentIndex].getClient_id();
+                String clientName = all_billingRecords[currentIndex].getClient_name();
+                String prdName = all_billingRecords[currentIndex].getProduct_name();
+                double prdPrice = all_billingRecords[currentIndex].getPrd_price();
+                int prdQty = all_billingRecords[currentIndex].getPrd_qty();
+                //calling the coding Extra
+                Intent intent = BillingActivity.newIntent(MainActivity.this, clientId, clientName,
+                        prdName, prdPrice, prdQty);
+                //StartActivity(intent);
+                startActivityIntent.launch(intent);
+*/
+            }
+        });
+    } //end of onCreate()
+
+    ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    //Decoding of extra data Intent
+                    if (result.getResultCode() != Activity.RESULT_OK)
+                    {
+                        return;
+                    }else
+                    {
+                        Billing billingUpdateInfo = BillingActivity.sendMessageBillingUpdateResult(result.getData());
+                        clientIdEdit_view.setText(billingUpdateInfo.getClient_id());
+                        clientNameEdit_view.setText(billingUpdateInfo.getClient_name());
+                        productNameEdit_view.setText(billingUpdateInfo.getProduct_name());
+                        productPriceEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_price()));
+                        productQuantityEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_qty()));
+
+                        Toast.makeText(MainActivity.this, "Updated Billing Record: " +
+                                        "Client: " + all_billingRecords[currentIndex].getClient_id() +
+                                        ", " + all_billingRecords[currentIndex].getClient_name() +
+                                        ", Product: " + all_billingRecords[currentIndex].getProduct_name() +
+                                        " is " + String.format("%.2f", all_billingRecords[currentIndex].CalculateBilling()) + "$",
+                                Toast.LENGTH_SHORT).show();
+
+                        //Update the array element
+                        all_billingRecords[currentIndex].setClient_id(billingUpdateInfo.getClient_id());
+                        all_billingRecords[currentIndex].setClient_name(billingUpdateInfo.getClient_name());
+                        all_billingRecords[currentIndex].setProduct_name(billingUpdateInfo.getProduct_name());
+                        all_billingRecords[currentIndex].setPrd_price(billingUpdateInfo.getPrd_price());
+                        all_billingRecords[currentIndex].setPrd_qty(billingUpdateInfo.getPrd_qty());
+                    }
+
+                }
+            }
+    );
 
     @Override
     public void onStart(){

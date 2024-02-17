@@ -1,14 +1,29 @@
 <resources>
     <string name="app_name">BillingProject</string>
-    <string name="client_id_edit_view">Client Id</string>
-    <string name="client_name_edit_view">Client Name</string>
-    <string name="product_name_edit_view">Product Name</string>
-    <string name="product_price_edit_view">Product Price</string>
-    <string name="product_quantity_edit_view">Product Quantity</string>
+<!--    Main Activity-->
+    <string name="client_id_edit_view">Please Enter Client Id</string>
+    <string name="client_name_edit_view">Please Enter Client Name</string>
+    <string name="product_name_edit_view">Please Enter Product Name</string>
+    <string name="product_price_edit_view">Please Enter Product Price</string>
+    <string name="product_quantity_edit_view">Please Enter Product Quantity</string>
     <string name="total_billing_text_view"></string>
     <string name="record_billing_text_view"></string>
     <string name="total_input_billing_button">Total Input Billing</string>
     <string name="total_record_billing_button">Total Record Billing</string>
+    <string name="billing_details_button">Billing Details</string>
     <string name="prev_billing_button">Prev Billing</string>
     <string name="next_billing_button">Next Billing</string>
+
+<!--    Billing Activity-->
+    <string name="client_id_label_billingA">Client ID</string>
+    <string name="client_id_edit_view_billingA">ID</string>
+    <string name="client_name_label_billingA">Client Name</string>
+    <string name="client_name_edit_view_billingA">Name</string>
+    <string name="product_name_label_billingA">Product Name</string>
+    <string name="product_name_edit_view_billingA">Name</string>
+    <string name="product_price_label_billingA">Product Price</string>
+    <string name="product_price_edit_view_billingA">Price</string>
+    <string name="product_qty_label_billingA">Product Qty</string>
+    <string name="product_qty_edit_view_billingA">Qty</string>
+    <string name="billing_update_button">Billing Update</string>
 </resources>
