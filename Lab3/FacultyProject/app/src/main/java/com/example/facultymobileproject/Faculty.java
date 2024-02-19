@@ -7,6 +7,14 @@ public class Faculty {
     private double salary;
     private double bonus;
 
+    public Faculty() {
+        this.faculty_id = 0;
+        this.faculty_LName = "";
+        this.getFaculty_FName = "";
+        this.salary = 0.0;
+        this.bonus = 0.0;
+    }
+
     public Faculty(int faculty_id, String faculty_LName, String getFaculty_FName, double salary, double bonus) {
         this.faculty_id = faculty_id;
         this.faculty_LName = faculty_LName;

@@ -1,7 +1,12 @@
 package com.example.facultymobileproject;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,14 +30,16 @@ public class MainActivity extends AppCompatActivity {
     private int currentIndex = 0;
     private static final String TAG = "Faculty Project";
     private static final String KEY_INDEX = "index";
+    public Faculty[] all_records;
 
+/*
     private static final String EXTRA_FACULTY_ID = "com.example.facultymobileproject.faculty_id";
     private static final String EXTRA_FACULTY_FNAME = "com.example.facultymobileproject.faculty_fName";
     private static final String EXTRA_FACULTY_LNAME = "com.example.facultymobileproject.faculty_fLame";
     private static final String EXTRA_FACULTY_SALARY = "com.example.facultymobileproject.faculty_salary";
     private static final String EXTRA_FACULTY_RATE_BONUS = "com.example.facultymobileproject.faculty_rate_bonus";
-    public Faculty[] all_records;
-
+    private static final String EXTRA_FACULTY_AMOUNT_BONUS = "com.example.facultymobileproject.faculty_amount_bonus";
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,45 +77,6 @@ public class MainActivity extends AppCompatActivity {
         bonus_Text_View = (TextView) findViewById(R.id.faculty_bonus_text_view);
         bonus_Text_View.setText(String.valueOf("Faculty Rate Bonus: " + all_records[currentIndex].getBonus()));
 
-        //Get the view of faculty_details_button
-        faculty_details_button = (Button) findViewById(R.id.faculty_details_button);
-        faculty_details_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //Start new Activity FacultyActivity
-
-                //First Approach
-                //Need to create same EXTRA variables in MainActivity and FacultyActivity
-                Intent intent = new Intent(MainActivity.this, FacultyActivity.class);
-                int facultyId = all_records[currentIndex].getFaculty_id();
-                String facultyFName = all_records[currentIndex].getFaculty_FName();
-                String facultyLName = all_records[currentIndex].getFaculty_LName();
-                double facultySalary = all_records[currentIndex].getSalary();
-                double facultyRateBonus = all_records[currentIndex].getBonus();
-                intent.putExtra(EXTRA_FACULTY_ID, facultyId);
-                intent.putExtra(EXTRA_FACULTY_FNAME, facultyFName);
-                intent.putExtra(EXTRA_FACULTY_LNAME, facultyLName);
-                intent.putExtra(EXTRA_FACULTY_SALARY, facultySalary);
-                intent.putExtra(EXTRA_FACULTY_RATE_BONUS, facultyRateBonus);
-                startActivity(intent);
-/*
-
-                //Second Approach
-                //Need to create EXTRA variables only in FacultyActivity
-                int facultyId = all_records[currentIndex].getFaculty_id();
-                String facultyFName = all_records[currentIndex].getFaculty_FName();
-                String facultyLName = all_records[currentIndex].getFaculty_LName();
-                double facultySalary = all_records[currentIndex].getSalary();
-                double facultyRateBonus = all_records[currentIndex].getBonus();
-
-                Intent intent = FacultyActivity.newIntent(MainActivity.this,
-                        facultyId, facultyFName, facultyLName, facultySalary, facultyRateBonus);
-
- */
-            }
-        });
-
         //Get the view of next_button
         next_button = (Button) findViewById(R.id.next_button);
         next_button.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +106,82 @@ public class MainActivity extends AppCompatActivity {
                 displayBonus();
             }
         });
+
+        //Get the view of faculty_details_button
+        faculty_details_button = (Button) findViewById(R.id.faculty_details_button);
+        faculty_details_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Start new Activity FacultyActivity
+/*
+                //First Approach
+                //Need to create same EXTRA variables in MainActivity and FacultyActivity
+                Intent intent = new Intent(MainActivity.this, FacultyActivity.class);
+                int facultyId = all_records[currentIndex].getFaculty_id();
+                String facultyFName = all_records[currentIndex].getFaculty_FName();
+                String facultyLName = all_records[currentIndex].getFaculty_LName();
+                double facultySalary = all_records[currentIndex].getSalary();
+                double facultyRateBonus = all_records[currentIndex].getBonus();
+                double facultyAmountBonus = all_records[currentIndex].calculate_Bonus();
+                intent.putExtra(EXTRA_FACULTY_ID, facultyId);
+                intent.putExtra(EXTRA_FACULTY_FNAME, facultyFName);
+                intent.putExtra(EXTRA_FACULTY_LNAME, facultyLName);
+                intent.putExtra(EXTRA_FACULTY_SALARY, facultySalary);
+                intent.putExtra(EXTRA_FACULTY_RATE_BONUS, facultyRateBonus);
+                intent.putExtra(EXTRA_FACULTY_AMOUNT_BONUS, facultyAmountBonus);
+                startActivity(intent);
+*/
+
+                //Second Approach
+                //Need to create EXTRA variables only in FacultyActivity
+                int facultyId = all_records[currentIndex].getFaculty_id();
+                String facultyFName = all_records[currentIndex].getFaculty_FName();
+                String facultyLName = all_records[currentIndex].getFaculty_LName();
+                double facultySalary = all_records[currentIndex].getSalary();
+                double facultyRateBonus = all_records[currentIndex].getBonus();
+                double facultyAmountBonus = all_records[currentIndex].calculate_Bonus();
+                Intent intent = FacultyActivity.newIntent(MainActivity.this,
+                        facultyId, facultyFName, facultyLName, facultySalary, facultyRateBonus, facultyAmountBonus);
+
+                //Only use when sending data from parent MainActivity WITHOUT expecting result from Child Activity
+                //startActivity(intent);
+
+                //Used when sending data from parent MainActivity WHEN expecting result from Child Activity(FacultyActivity)
+                StartActivityIntent.launch(intent);
+
+            }
+        });
+
     } //end of onCreate()
+
+        ActivityResultLauncher<Intent> StartActivityIntent = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+
+                        if(result.getResultCode()!= Activity.RESULT_OK)
+                        {
+                            return;
+                        }else
+                        {
+                            Faculty facultyUpdateInfo = FacultyActivity.sendMessageFacultyUpdateResult(result.getData());
+                            display_bonus_Text_View = (TextView) findViewById(R.id.display_bonus_text_view);
+                            display_bonus_Text_View.setText("Faculty Amount Bonus: " +
+                                    facultyUpdateInfo.calculate_Bonus());
+
+                            //Update array component related to currentIndex
+                            all_records[currentIndex].setFaculty_id(facultyUpdateInfo.getFaculty_id());
+                            all_records[currentIndex].setGetFaculty_FName(facultyUpdateInfo.getFaculty_FName());
+                            all_records[currentIndex].setFaculty_LName(facultyUpdateInfo.getFaculty_LName());
+                            all_records[currentIndex].setSalary(facultyUpdateInfo.getSalary());
+                            all_records[currentIndex].setBonus(facultyUpdateInfo.getBonus());
+
+                        }
+                    }
+                }
+        );
 
     //Methods to display total bonus
     public void displayBonus(){
