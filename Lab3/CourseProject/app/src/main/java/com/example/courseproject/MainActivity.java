@@ -122,16 +122,19 @@ public class MainActivity extends AppCompatActivity {
                         Course courseUpdateinfo = CourseActivity.sendMessageCourseUpdateResult(result.getData());
                         courseText_View.setText("Course: " + courseUpdateinfo.getCourse_no() +
                                 " " + courseUpdateinfo.getCourse_name());
+                        courseTotalFeesText_View.setText("Update Total Course Fees is: " +
+                                courseUpdateinfo.calculateTotalFees());
 
-                        Toast.makeText(MainActivity.this, "Updated Course: " +
-                                "Course: " + courseUpdateinfo.getCourse_no() +
-                                " " + courseUpdateinfo.getCourse_name(),
-                                Toast.LENGTH_SHORT).show();
                         //Update the array element
                         all_courses[currentIndex].setCourse_no(courseUpdateinfo.getCourse_no());
                         all_courses[currentIndex].setCourse_name(courseUpdateinfo.getCourse_name());
                         all_courses[currentIndex].setMax_enrl(courseUpdateinfo.getMax_enrl());
                         all_courses[currentIndex].credits = courseUpdateinfo.credits;
+
+                        Toast.makeText(MainActivity.this, "Updated Course: " +
+                                        "Course: " + all_courses[currentIndex].getCourse_no() +
+                                        " " + all_courses[currentIndex].getCourse_name(),
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }

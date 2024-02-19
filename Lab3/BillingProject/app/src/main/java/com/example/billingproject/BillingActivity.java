@@ -53,7 +53,7 @@ public class BillingActivity extends AppCompatActivity {
 
         //Get the view of client_id_edit_view_billingA
         clientIdEditText = (EditText) findViewById(R.id.client_id_edit_view_billingA);
-        clientIdEditText.setText(clientIdRetrieved);
+        clientIdEditText.setText(clientIdRetrieved+"");
 
         //Get the view of client_name_edit_view_billingA
         clientNameEditText = (EditText) findViewById(R.id.client_name_edit_view_billingA);
@@ -65,11 +65,11 @@ public class BillingActivity extends AppCompatActivity {
 
         //Get the view of product_price_edit_view_billingA
         prdPriceEditText = (EditText) findViewById(R.id.product_price_edit_view_billingA);
-        prdPriceEditText.setText(String.valueOf(prdPriceRetrieved));
+        prdPriceEditText.setText(String.valueOf(prdPriceRetrieved+""));
 
         //Get the view of product_qty_edit_view_billingA
         prdQtyEditText = (EditText) findViewById(R.id.product_qty_edit_view_billingA);
-        prdQtyEditText.setText(prdQtyRetrieved);
+        prdQtyEditText.setText(prdQtyRetrieved+"");
 
         //Get the view of billing_update_button
         billingUpdateButton = (Button) findViewById(R.id.billing_update_button);
@@ -111,6 +111,7 @@ public class BillingActivity extends AppCompatActivity {
         billingUpdateInfo.setPrd_price(resultIntent.getDoubleExtra(EXTRA_PRODUCT_PRICE, 0.0));
         billingUpdateInfo.setPrd_qty(resultIntent.getIntExtra(EXTRA_PRODUCT_QTY,0));
         return billingUpdateInfo;
+
     }
 
 }

@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         billingDetails_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*
+
                 //Start new Activity BillingActivity
                 //The first approach is to call startActivity as Unidirectional Communication
                 //Only use when sending data from parent activity to child activity
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         prdName, prdPrice, prdQty);
                 //StartActivity(intent);
                 startActivityIntent.launch(intent);
-*/
+
             }
         });
     } //end of onCreate()
@@ -174,10 +174,10 @@ public class MainActivity extends AppCompatActivity {
                         productQuantityEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_qty()));
 
                         Toast.makeText(MainActivity.this, "Updated Billing Record: " +
-                                        "Client: " + all_billingRecords[currentIndex].getClient_id() +
-                                        ", " + all_billingRecords[currentIndex].getClient_name() +
-                                        ", Product: " + all_billingRecords[currentIndex].getProduct_name() +
-                                        " is " + String.format("%.2f", all_billingRecords[currentIndex].CalculateBilling()) + "$",
+                                        "Client: " + billingUpdateInfo.getClient_id() +
+                                        ", " + billingUpdateInfo.getClient_name() +
+                                        ", Product: " + billingUpdateInfo.getProduct_name() +
+                                        " is " + String.format("%.2f", billingUpdateInfo.CalculateBilling()) + "$",
                                 Toast.LENGTH_SHORT).show();
 
                         //Update the array element
