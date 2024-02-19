@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="166dp"
         android:orientation="vertical">
 
         <TextView
@@ -30,9 +30,10 @@
             android:layout_gravity="left|center_horizontal"
             android:text="@string/faculty_FName_text_view" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="226dp"
+        android:layout_height="166dp"
         android:orientation="vertical">
     <TextView
         android:id="@+id/faculty_salary_text_view"
@@ -59,35 +60,49 @@
         android:layout_gravity="right|center_horizontal"
        />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="568dp"
-        android:layout_height="161dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/next_button"
-            android:layout_width="286dp"
-            android:layout_height="56dp"
-            android:text="@string/next_button" />
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="156dp"
+        android:layout_gravity="center_horizontal">
 
         <Button
             android:id="@+id/prev_button"
-            android:layout_width="286dp"
+            android:layout_width="300dp"
             android:layout_height="56dp"
-            android:text="@string/prev_button" />
-    </LinearLayout>
+            android:text="@string/prev_button"
+            android:layout_gravity="center_horizontal"/>
 
-    <Button
-        android:id="@+id/display_bonus_button"
-        android:layout_width="286dp"
-        android:layout_height="56dp"
-        android:text="@string/display_bonus_button"
-        android:layout_gravity="bottom|center_horizontal"
-        />
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="300dp"
+            android:layout_height="56dp"
+            android:text="@string/next_button"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="226dp"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="120dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/faculty_details_button"
+            android:layout_width="286dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/faculty_details_button"
+            android:layout_marginTop="12dp"/>
+
+        <Button
+            android:id="@+id/all_faculty_button"
+            android:layout_width="286dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/all_faculty_button" />
+    </LinearLayout>
+
 </FrameLayout>
