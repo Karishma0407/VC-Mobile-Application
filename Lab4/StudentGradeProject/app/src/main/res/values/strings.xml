@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">StudentGradeProject</string>
+    <string name="student_name_text_view"></string>
+    <string name="student_grade_text_view"></string>
+    <string name="display_grade_button">Display Student Grade Average</string>
+    <string name="next_button">Next Student</string>
+    <string name="prev_button">Prev Student</string>
 </resources>
