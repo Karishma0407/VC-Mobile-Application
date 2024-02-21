@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 double facultySalary = all_records[currentIndex].getSalary();
                 double facultyRateBonus = all_records[currentIndex].getBonus();
                 double facultyAmountBonus = all_records[currentIndex].calculate_Bonus();
+                //Calling the coding Extra
                 Intent intent = FacultyActivity.newIntent(MainActivity.this,
                         facultyId, facultyFName, facultyLName, facultySalary, facultyRateBonus, facultyAmountBonus);
 
@@ -148,28 +149,37 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
 
                 //Used when sending data from parent MainActivity WHEN expecting result from Child Activity(FacultyActivity)
-                StartActivityIntent.launch(intent);
+                startActivityIntent.launch(intent);
 
             }
         });
 
     } //end of onCreate()
 
-        ActivityResultLauncher<Intent> StartActivityIntent = registerForActivityResult(
+        ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-
+                        //Decoding of extra data intent
                         if(result.getResultCode()!= Activity.RESULT_OK)
                         {
                             return;
                         }else
                         {
                             Faculty facultyUpdateInfo = FacultyActivity.sendMessageFacultyUpdateResult(result.getData());
+                            idText_View.setText(String.valueOf(facultyUpdateInfo.getFaculty_id()));
+                            faculty_LName_Text_View.setText(facultyUpdateInfo.getFaculty_LName());
+                            faculty_FName_Text_View.setText(facultyUpdateInfo.getFaculty_FName());
+                            salary_Text_View.setText(String.valueOf(facultyUpdateInfo.getSalary()));
+                            bonus_Text_View.setText(String.valueOf(facultyUpdateInfo.getBonus()));
+
                             display_bonus_Text_View = (TextView) findViewById(R.id.display_bonus_text_view);
                             display_bonus_Text_View.setText("Faculty Amount Bonus: " +
                                     facultyUpdateInfo.calculate_Bonus());
+
+                            Toast.makeText(MainActivity.this, "Updated Faculty Bonus: " +
+                                    facultyUpdateInfo.calculate_Bonus(), Toast.LENGTH_SHORT).show();
 
                             //Update array component related to currentIndex
                             all_records[currentIndex].setFaculty_id(facultyUpdateInfo.getFaculty_id());
@@ -236,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
-
         super.onSaveInstanceState(savedInstanceState);
         Log.d(TAG,"onSaveInstanceState is called"); //Debug purpose
         savedInstanceState.putInt(KEY_INDEX, currentIndex); //store transient data currentIndex

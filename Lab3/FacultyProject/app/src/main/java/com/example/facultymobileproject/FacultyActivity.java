@@ -26,6 +26,7 @@ public class FacultyActivity extends AppCompatActivity {
     private double facultyRateBonusRetrieve;
     private double facultyAmountBonusRetrieve;
 
+    //Define all KEYS
     private static final String EXTRA_FACULTY_ID = "com.example.facultymobileproject.faculty_id";
     private static final String EXTRA_FACULTY_FNAME = "com.example.facultymobileproject.faculty_fName";
     private static final String EXTRA_FACULTY_LNAME = "com.example.facultymobileproject.faculty_fLame";
@@ -33,6 +34,8 @@ public class FacultyActivity extends AppCompatActivity {
     private static final String EXTRA_FACULTY_RATE_BONUS = "com.example.facultymobileproject.faculty_rate_bonus";
     private static final String EXTRA_FACULTY_AMOUNT_BONUS = "com.example.facultymobileproject.faculty_amount_bonus";
 
+    //Eliminate all coupling between parent and child activities
+    //Coding all Extra in the intent object
     public static Intent newIntent(Context packageContext, int facultyId,
                                    String facultyFName, String facultyLName, double facultySalary,
                                    double facultyRateBonus, double facultyAmountBonus)
@@ -53,6 +56,7 @@ public class FacultyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty);
 
+        //Decoding the extra data from the intent object
         facultyIdRetrieve = getIntent().getIntExtra(EXTRA_FACULTY_ID,0);
         facultyFNameRetrieve = getIntent().getStringExtra(EXTRA_FACULTY_FNAME);
         facultyLNameRetrieve = getIntent().getStringExtra(EXTRA_FACULTY_LNAME);
@@ -101,6 +105,7 @@ public class FacultyActivity extends AppCompatActivity {
         });
     } //End of onCreate()
 
+    //Coding Extra data Intent from child to parent Activity
     private void setFacultyUpdateResult(int facultyId, String facultyFName, String facultyLName,
                                         double facultySalary, double facultyRateBonus)
     {
@@ -113,6 +118,7 @@ public class FacultyActivity extends AppCompatActivity {
         setResult(RESULT_OK, dataIntent);
     }
 
+    //Decoding Extra data Intent in ParentActivity
     public static Faculty sendMessageFacultyUpdateResult(Intent resultIntent)
     {
         Faculty facultyUpdateInfo = new Faculty();
