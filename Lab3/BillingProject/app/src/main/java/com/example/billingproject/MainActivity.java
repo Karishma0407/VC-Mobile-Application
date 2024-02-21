@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                     }else
                     {
                         Billing billingUpdateInfo = BillingActivity.sendMessageBillingUpdateResult(result.getData());
-                        clientIdEdit_view.setText(billingUpdateInfo.getClient_id());
+                        clientIdEdit_view.setText(String.valueOf(billingUpdateInfo.getClient_id()));
                         clientNameEdit_view.setText(billingUpdateInfo.getClient_name());
                         productNameEdit_view.setText(billingUpdateInfo.getProduct_name());
                         productPriceEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_price()));
