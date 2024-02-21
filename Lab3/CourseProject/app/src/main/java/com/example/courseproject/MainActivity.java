@@ -120,9 +120,9 @@ public class MainActivity extends AppCompatActivity {
                     }else
                     {
                         Course courseUpdateinfo = CourseActivity.sendMessageCourseUpdateResult(result.getData());
-                        courseText_View.setText("Course: " + courseUpdateinfo.getCourse_no() +
+                        courseText_View.setText("Updated Course: " + courseUpdateinfo.getCourse_no() +
                                 " " + courseUpdateinfo.getCourse_name());
-                        courseTotalFeesText_View.setText("Update Total Course Fees is: " +
+                        courseTotalFeesText_View.setText("Update Total Course Fees: " +
                                 courseUpdateinfo.calculateTotalFees());
 
                         //Update the array element
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                         all_courses[currentIndex].setMax_enrl(courseUpdateinfo.getMax_enrl());
                         all_courses[currentIndex].credits = courseUpdateinfo.credits;
 
-                        Toast.makeText(MainActivity.this, "Updated Course: " +
+                        Toast.makeText(MainActivity.this, "Course Updated Info is: " +
                                         "Course: " + all_courses[currentIndex].getCourse_no() +
                                         " " + all_courses[currentIndex].getCourse_name(),
                                 Toast.LENGTH_SHORT).show();

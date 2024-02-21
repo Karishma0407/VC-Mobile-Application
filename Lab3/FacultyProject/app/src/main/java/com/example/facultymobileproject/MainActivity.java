@@ -5,6 +5,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +16,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button faculty_details_button;
     private Button next_button;
     private Button prev_button;
+    private Button allFaculty_button;
 
     private int currentIndex = 0;
     private static final String TAG = "Faculty Project";
@@ -151,6 +157,35 @@ public class MainActivity extends AppCompatActivity {
                 //Used when sending data from parent MainActivity WHEN expecting result from Child Activity(FacultyActivity)
                 startActivityIntent.launch(intent);
 
+            }
+        });
+
+        //Get the view of all_faculty_button
+        allFaculty_button = (Button) findViewById(R.id.all_faculty_button);
+        allFaculty_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RecyclerView recyclerView = findViewById(R.id.recyclerview);
+
+                List<Faculty> faculties = new ArrayList<Faculty>();
+                faculties.add(new Faculty(101, "Robertson", "Myra", 60000.00, 2.50));
+                faculties.add(new Faculty(102, "Smith", "Neal", 40000.00, 3.00));
+                faculties.add(new Faculty(103, "Arlec", "Lisa", 55000.00, 1.50));
+                faculties.add(new Faculty(104, "Fillipo", "Paul", 30000.00, 5.00));
+                faculties.add(new Faculty(105, "Denkan", "Anais", 95000.00, 5.00));
+                faculties.add(new Faculty(107, "Robertson", "Myra", 60000.00, 2.50));
+                faculties.add(new Faculty(108, "Smith", "Neal", 40000.00, 3.00));
+                faculties.add(new Faculty(109, "Arlec", "Lisa", 55000.00, 1.50));
+                faculties.add(new Faculty(110, "Fillipo", "Paul", 30000.00, 5.00));
+                faculties.add(new Faculty(111, "Denkan", "Anais", 95000.00, 5.00));
+                faculties.add(new Faculty(112, "Smith", "Neal", 40000.00, 3.00));
+                faculties.add(new Faculty(113, "Arlec", "Lisa", 55000.00, 1.50));
+                faculties.add(new Faculty(114, "Fillipo", "Paul", 30000.00, 5.00));
+                faculties.add(new Faculty(115, "Denkan", "Anais", 95000.00, 5.00));
+                faculties.add(new Faculty(116, "Robertson", "Myra", 60000.00, 2.50));
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                recyclerView.setAdapter(new MyAdapter(getApplicationContext(), faculties));
             }
         });
 
