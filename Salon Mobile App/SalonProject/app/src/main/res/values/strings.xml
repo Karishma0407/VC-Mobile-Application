@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SalonProject</string>
+
+    <!--    MainActivity-->
+    <string name="email_text_view">Email</string>
+    <string name="email_edit_text"></string>
+    <string name="pwd_text_view">Password</string>
+    <string name="pwd_edit_text"></string>
+    <string name="forgot_pwd_text_view">I forgot my password</string>
+    <string name="signin_button">Sign in</string>
+    <string name="signup_text_view">Sign up</string>
+
+    <!--    HomePageActivity-->
+    <string name="appointment_button">Book an Appointment</string>
 </resources>

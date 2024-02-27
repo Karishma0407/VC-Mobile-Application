@@ -18,9 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="22dp"
-        >
-
+        android:padding="22dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,8 +26,9 @@
             android:textStyle="italic|bold"
             android:fontFamily="sans-serif"
             android:textSize="42dp"
-            android:textColor="@color/white"/>
-
+            android:textColor="@color/white"
+            android:layout_marginTop="40dp"
+        />
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -62,42 +61,49 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"/>
+
             <TextView
+                android:id="@+id/email_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
-                android:textStyle="bold"/>
+                android:text="@string/email_text_view"
+                android:textStyle="bold" />
             <EditText
+                android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:drawableEnd="@drawable/done_icon"/>
+                android:drawableEnd="@drawable/done_icon"
+                android:inputType="textEmailAddress" />
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
+
             <TextView
+                android:id="@+id/pwd_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
-                android:textStyle="bold"/>
+                android:text="@string/pwd_text_view"
+                android:textStyle="bold" />
             <EditText
+                android:id="@+id/pwd_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/redeye_icon"/>
+                android:drawableEnd="@drawable/redeye_icon"
+                android:inputType="textPassword" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/forgot_pwd_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I forgot my password"
-                    android:alpha="0.7"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:alpha="0.7"
+                    android:text="@string/forgot_pwd_text_view" />
 
             </RelativeLayout>
 
@@ -105,11 +111,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"/>
 
-            <com.google.android.material.button.MaterialButton
+            <Button
+                android:id="@+id/signin_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Sign in"
-                app:cornerRadius="32dp"/>
+                android:text="@string/signin_button"
+                app:cornerRadius="32dp" />
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"/>
@@ -119,28 +127,19 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="10dp">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="First time user?"
                 />
-
                 <TextView
+                    android:id="@+id/signup_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign Up"
-                    android:textStyle="bold"
                     android:layout_marginLeft="5dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
-                    android:drawableEnd="@drawable/signup_icon"/>
-
+                    android:drawableRight="@drawable/signup_icon"
+                    android:text="@string/signup_text_view"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
