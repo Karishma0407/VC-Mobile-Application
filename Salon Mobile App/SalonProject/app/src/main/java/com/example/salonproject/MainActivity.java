@@ -57,6 +57,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Get the view of signup_text_view
+        signUpTextView = (TextView) findViewById(R.id.signup_text_view);
+        signUpTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Go to new Activity
+                Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
