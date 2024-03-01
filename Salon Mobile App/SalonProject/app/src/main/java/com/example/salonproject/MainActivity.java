@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         if(emailValue.equals(email) && pwdValue.equals(pwd)){
             return true;
         }
-
         return false;
     }
 }
