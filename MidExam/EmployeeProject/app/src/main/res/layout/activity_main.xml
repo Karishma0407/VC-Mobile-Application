@@ -7,12 +7,83 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/empl_id_text_view"
+        android:layout_width="262dp"
+        android:layout_height="69dp"
+        android:text="@string/empl_id_text_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091" />
+
+    <TextView
+        android:id="@+id/empl_name_text_view"
+        android:layout_width="262dp"
+        android:layout_height="69dp"
+        android:text="@string/empl_name_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/empl_id_text_view"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/empl_id_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/empl_id_text_view"
+        app:layout_constraintVertical_bias="0.039" />
+
+    <TextView
+        android:id="@+id/empl_salary_text_view"
+        android:layout_width="262dp"
+        android:layout_height="69dp"
+        android:text="@string/empl_salary_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/empl_name_text_view"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/empl_name_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/empl_name_text_view"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <TextView
+        android:id="@+id/display_empl_tax_text_view"
+        android:layout_width="262dp"
+        android:layout_height="69dp"
+        android:text="@string/display_empl_tax_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/empl_salary_text_view"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/empl_salary_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/empl_salary_text_view"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <Button
+        android:id="@+id/prev_empl_button"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
+        android:text="@string/prev_empl_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/display_empl_tax_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/display_empl_tax_text_view"
+        app:layout_constraintVertical_bias="0.269" />
+
+    <Button
+        android:id="@+id/next_empl_button"
+        android:layout_width="155dp"
+        android:layout_height="75dp"
+        android:text="@string/next_empl_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/display_empl_tax_text_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/prev_empl_button"
+        app:layout_constraintTop_toBottomOf="@+id/display_empl_tax_text_view"
+        app:layout_constraintVertical_bias="0.269" />
+
+    <Button
+        android:id="@+id/empl_tax_button"
+        android:layout_width="252dp"
+        android:layout_height="78dp"
+        android:text="@string/empl_tax_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/next_empl_button"
+        app:layout_constraintStart_toStartOf="@+id/prev_empl_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_empl_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
