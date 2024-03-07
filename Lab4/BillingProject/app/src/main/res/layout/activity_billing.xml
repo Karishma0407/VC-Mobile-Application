@@ -139,15 +139,50 @@
 
     <Button
         android:id="@+id/billing_update_button"
-        android:layout_width="237dp"
-        android:layout_height="52dp"
+        android:layout_width="143dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="20dp"
         android:text="@string/billing_update_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/product_qty_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="@+id/product_qty_label_billingA"
         app:layout_constraintTop_toBottomOf="@+id/product_qty_edit_view_billingA"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.229" />
+
+    <Button
+        android:id="@+id/billing_delete_button"
+        android:layout_width="143dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/billing_delete_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/product_qty_edit_view_billingA"
+        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintStart_toEndOf="@+id/billing_update_button"
+        app:layout_constraintTop_toBottomOf="@+id/product_qty_edit_view_billingA"
+        app:layout_constraintVertical_bias="0.229" />
+
+    <Button
+        android:id="@+id/billing_search_button"
+        android:layout_width="143dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="40dp"
+        android:text="@string/billing_search_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/billing_update_button"
+        app:layout_constraintVertical_bias="0.504" />
+
+    <Button
+        android:id="@+id/billing_view_button"
+        android:layout_width="143dp"
+        android:layout_height="74dp"
+        android:text="@string/billing_view_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toEndOf="@+id/billing_search_button"
+        app:layout_constraintTop_toBottomOf="@+id/billing_delete_button"
+        app:layout_constraintVertical_bias="0.504" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

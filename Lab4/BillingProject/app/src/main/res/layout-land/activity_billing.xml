@@ -138,25 +138,61 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.139" />
 
-    <!--    Client Name-->
-
-    <!--    Product Name-->
-
-    <!--    Product Price-->
-
-    <!--    Product Quantity-->
-
-    <Button
-        android:id="@+id/billing_update_button"
-        android:layout_width="237dp"
-        android:layout_height="52dp"
-        android:text="@string/billing_update_button"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="523dp"
+        android:layout_height="82dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/product_qty_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="@+id/product_qty_label_billingA"
         app:layout_constraintTop_toBottomOf="@+id/product_qty_edit_view_billingA"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.0">
 
+        <Button
+            android:id="@+id/billing_update_button"
+            android:layout_width="143dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:text="@string/billing_update_button" />
+
+        <Button
+            android:id="@+id/billing_delete_button"
+            android:layout_width="143dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"
+            android:text="@string/billing_delete_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="523dp"
+        android:layout_height="82dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+     <Button
+         android:id="@+id/billing_search_button"
+         android:layout_width="143dp"
+         android:layout_height="74dp"
+         android:text="@string/billing_search_button"
+         android:layout_gravity="center"/>
+
+     <Button
+         android:id="@+id/billing_view_button"
+         android:layout_width="143dp"
+         android:layout_height="74dp"
+         android:text="@string/billing_view_button"
+         android:layout_gravity="center" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

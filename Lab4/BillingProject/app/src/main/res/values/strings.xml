@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">BillingProject</string>
-<!--    Main Activity-->
+    <!--    Main Activity-->
     <string name="client_id_edit_view">Please Enter Client Id</string>
     <string name="client_name_edit_view">Please Enter Client Name</string>
     <string name="product_name_edit_view">Please Enter Product Name</string>
@@ -14,7 +14,7 @@
     <string name="prev_billing_button">Prev Billing</string>
     <string name="next_billing_button">Next Billing</string>
 
-<!--    Billing Activity-->
+    <!--    Billing Activity-->
     <string name="client_id_label_billingA">Client ID</string>
     <string name="client_id_edit_view_billingA">ID</string>
     <string name="client_name_label_billingA">Client Name</string>
@@ -26,4 +26,7 @@
     <string name="product_qty_label_billingA">Product Qty</string>
     <string name="product_qty_edit_view_billingA">Qty</string>
     <string name="billing_update_button">Billing Update</string>
+    <string name="billing_delete_button">Billing Delete</string>
+    <string name="billing_search_button">Billing Search</string>
+    <string name="billing_view_button">Billing View</string>
 </resources>
