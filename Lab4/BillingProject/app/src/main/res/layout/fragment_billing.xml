@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BillingActivity">
+    tools:context=".BillingFragment">
 
-<!--    Client ID-->
-
+    <!--    Client ID-->
     <TextView
         android:id="@+id/client_id_label_billingA"
         android:layout_width="142dp"
@@ -15,23 +14,25 @@
         android:text="@string/client_id_label_billingA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
-
-    <TextView
-        android:id="@+id/product_price_label_billingA"
-        android:layout_width="142dp"
+        app:layout_constraintVertical_bias="0.091" />
+    <EditText
+        android:id="@+id/client_id_edit_view_billingA"
+        android:layout_width="250dp"
         android:layout_height="52dp"
-        android:text="@string/product_price_label_billingA"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/client_id_edit_view_billingA"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.092" />
 
+    <!--    Client Name-->
     <TextView
         android:id="@+id/client_name_label_billingA"
         android:layout_width="142dp"
@@ -39,51 +40,10 @@
         android:text="@string/client_name_label_billingA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
-
-    <EditText
-        android:id="@+id/product_name_edit_view_billingA"
-        android:layout_width="250dp"
-        android:layout_height="52dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/product_name_edit_view_billingA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
-
-    <TextView
-        android:id="@+id/product_name_label_billingA"
-        android:layout_width="142dp"
-        android:layout_height="52dp"
-        android:text="@string/product_name_label_billingA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.994"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
-
-    <EditText
-        android:id="@+id/product_price_edit_view_billingA"
-        android:layout_width="250dp"
-        android:layout_height="52dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/product_price_edit_view_billingA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
-
+        app:layout_constraintVertical_bias="0.213" />
     <EditText
         android:id="@+id/client_name_edit_view_billingA"
         android:layout_width="250dp"
@@ -93,10 +53,75 @@
         android:text="@string/client_name_edit_view_billingA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintVertical_bias="0.213" />
+
+    <!--    Product Name-->
+    <TextView
+        android:id="@+id/product_name_label_billingA"
+        android:layout_width="142dp"
+        android:layout_height="52dp"
+        android:text="@string/product_name_label_billingA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
+    <EditText
+        android:id="@+id/product_name_edit_view_billingA"
+        android:layout_width="250dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/product_name_edit_view_billingA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
+
+    <!--    Product Price-->
+    <TextView
+        android:id="@+id/product_price_label_billingA"
+        android:layout_width="142dp"
+        android:layout_height="52dp"
+        android:text="@string/product_price_label_billingA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+    <EditText
+        android:id="@+id/product_price_edit_view_billingA"
+        android:layout_width="250dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/product_price_edit_view_billingA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <!--    Product Quantity-->
+    <TextView
+        android:id="@+id/product_qty_label_billingA"
+        android:layout_width="142dp"
+        android:layout_height="52dp"
+        android:text="@string/product_qty_label_billingA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.556" />
 
     <EditText
         android:id="@+id/product_qty_edit_view_billingA"
@@ -107,56 +132,58 @@
         android:text="@string/product_qty_edit_view_billingA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintVertical_bias="0.556" />
 
-    <TextView
-        android:id="@+id/product_qty_label_billingA"
-        android:layout_width="142dp"
-        android:layout_height="52dp"
-        android:text="@string/product_qty_label_billingA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/client_id_edit_view_billingA"
-        app:layout_constraintHorizontal_bias="0.994"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
-
-    <EditText
-        android:id="@+id/client_id_edit_view_billingA"
-        android:layout_width="250dp"
-        android:layout_height="52dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/client_id_edit_view_billingA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
-
-    <!--    Client Name-->
-
-    <!--    Product Name-->
-
-    <!--    Product Price-->
-
-    <!--    Product Quantity-->
-
-    <Button
-        android:id="@+id/billing_update_button"
-        android:layout_width="237dp"
-        android:layout_height="52dp"
-        android:text="@string/billing_update_button"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/product_qty_edit_view_billingA"
         app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="@+id/product_qty_label_billingA"
         app:layout_constraintTop_toBottomOf="@+id/product_qty_edit_view_billingA"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.22">
+        <Button
+            android:id="@+id/billing_update_button"
+            android:layout_width="160dp"
+            android:layout_height="62dp"
+            android:text="@string/billing_update_button"
+            />
+        <Button
+            android:id="@+id/billing_delete_button"
+            android:layout_width="160dp"
+            android:layout_height="62dp"
+            android:text="@string/billing_delete_button"
+            />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
+        app:layout_constraintVertical_bias="0.22">
+        <Button
+            android:id="@+id/billing_search_button"
+            android:layout_width="160dp"
+            android:layout_height="62dp"
+            android:text="@string/billing_search_button"
+            />
+        <Button
+            android:id="@+id/billing_view_button"
+            android:layout_width="160dp"
+            android:layout_height="62dp"
+            android:text="@string/billing_view_button"
+            />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

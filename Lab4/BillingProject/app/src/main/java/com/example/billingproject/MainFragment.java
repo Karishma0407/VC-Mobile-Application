@@ -1,10 +1,18 @@
 package com.example.billingproject;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.content.Context;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +41,7 @@ public class MainFragment extends Fragment {
     private Button next_button;
 
     private int currentIndex = 0;
-    public static String TAG = "Billing Project";
+    public static  String TAG = "Billing Project";
     public static String KEY_INDEX = "index";
 
     public Billing[] all_billingRecords;
@@ -41,7 +49,7 @@ public class MainFragment extends Fragment {
     ArrayList<Billing> billingModelArraylist;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Should be retrieved from the database
@@ -57,12 +65,18 @@ public class MainFragment extends Fragment {
         billingBaseHelper.addNewBillingDetails(billingRecord1);
         billingBaseHelper.addNewBillingDetails(billingRecord2);
         billingBaseHelper.addNewBillingDetails(billingRecord3);
-    }
+
+        //Update record
+
+        //Delete record
+
+    } //End of onCreate
 
     @Nullable
     @Override
-    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         //Get the view of all Edit Text and assign values from the array
@@ -141,7 +155,7 @@ public class MainFragment extends Fragment {
                 productQuantityEdit_view.setText(String.valueOf(all_billingRecords[currentIndex].getPrd_qty()));
             }
         });
-/*
+
         //Get the view of billing_details_button
         billingDetails_button = (Button) v.findViewById(R.id.billing_details_button);
         billingDetails_button.setOnClickListener(new View.OnClickListener() {
@@ -157,87 +171,50 @@ public class MainFragment extends Fragment {
                 double prdPrice = all_billingRecords[currentIndex].getPrd_price();
                 int prdQty = all_billingRecords[currentIndex].getPrd_qty();
                 //calling the coding Extra
-                //Intent intent = BillingActivity.newIntent(MainActivity.this, clientId, clientName,
-                  //      prdName, prdPrice, prdQty);
+                Intent intent = BillingFragment.newIntent(getActivity(), clientId, clientName,
+                        prdName, prdPrice, prdQty);
                 //StartActivity(intent);
-                //startActivityIntent.launch(intent);
+                startActivityIntent.launch(intent);
 
             }
-        });*/
-        return v;
+        });
+    return v;
     }
 
-//    ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
-//            new ActivityResultContracts.StartActivityForResult(),
-//            new ActivityResultCallback<ActivityResult>() {
-//                @Override
-//                public void onActivityResult(ActivityResult result) {
-//                    //Decoding of extra data Intent
-//                    if (result.getResultCode() != Activity.RESULT_OK)
-//                    {
-//                        return;
-//                    }else
-//                    {
-//                        Billing billingUpdateInfo = BillingActivity.sendMessageBillingUpdateResult(result.getData());
-//                        clientIdEdit_view.setText(String.valueOf(billingUpdateInfo.getClient_id()));
-//                        clientNameEdit_view.setText(billingUpdateInfo.getClient_name());
-//                        productNameEdit_view.setText(billingUpdateInfo.getProduct_name());
-//                        productPriceEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_price()));
-//                        productQuantityEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_qty()));
-//
-//                        /*Toast.makeText(MainActivity.this, "Updated Billing Record: " +
-//                                        "Client: " + billingUpdateInfo.getClient_id() +
-//                                        ", " + billingUpdateInfo.getClient_name() +
-//                                        ", Product: " + billingUpdateInfo.getProduct_name() +
-//                                        " is " + String.format("%.2f", billingUpdateInfo.CalculateBilling()) + "$",
-//                                Toast.LENGTH_SHORT).show();*/
-//
-//                        //Update the array element
-//                        all_billingRecords[currentIndex].setClient_id(billingUpdateInfo.getClient_id());
-//                        all_billingRecords[currentIndex].setClient_name(billingUpdateInfo.getClient_name());
-//                        all_billingRecords[currentIndex].setProduct_name(billingUpdateInfo.getProduct_name());
-//                        all_billingRecords[currentIndex].setPrd_price(billingUpdateInfo.getPrd_price());
-//                        all_billingRecords[currentIndex].setPrd_qty(billingUpdateInfo.getPrd_qty());
-//                    }
-//
-//                }
-//            }
-//    );
-//
-//    @Override
-//    public void onStart(){
-//        super.onStart();
-//        Log.d(TAG,"onStart"); //Debug purpose
-//    }
-//
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        Log.d(TAG,"onResume"); //Debug purpose
-//    }
-//
-//    @Override
-//    public void onPause(){
-//        super.onPause();
-//        Log.d(TAG,"onPause"); //Debug purpose
-//    }
-//
-//    @Override
-//    public void onStop(){
-//        super.onStop();
-//        Log.d(TAG,"onStop"); //Debug purpose
-//    }
-//
-//    @Override
-//    public void onDestroy(){
-//        super.onDestroy();
-//        Log.d(TAG,"onDestroy"); //Debug purpose
-//    }
-//
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState){
-//        super.onSaveInstanceState(savedInstanceState);
-//        Log.d(TAG, "onSaveInstanceState is called"); //Debug purpose
-//        savedInstanceState.putInt(KEY_INDEX, currentIndex); //store transient data currentIndex
-//    }
+    ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    //Decoding of extra data Intent
+                    if (result.getResultCode() != Activity.RESULT_OK)
+                    {
+                        return;
+                    }else
+                    {
+                        Billing billingUpdateInfo = BillingFragment.sendMessageBillingUpdateResult(result.getData());
+                        clientIdEdit_view.setText(String.valueOf(billingUpdateInfo.getClient_id()));
+                        clientNameEdit_view.setText(billingUpdateInfo.getClient_name());
+                        productNameEdit_view.setText(billingUpdateInfo.getProduct_name());
+                        productPriceEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_price()));
+                        productQuantityEdit_view.setText(String.valueOf(billingUpdateInfo.getPrd_qty()));
+
+                        Toast.makeText(getActivity(), "Updated Billing Record: " +
+                                        "Client: " + billingUpdateInfo.getClient_id() +
+                                        ", " + billingUpdateInfo.getClient_name() +
+                                        ", Product: " + billingUpdateInfo.getProduct_name() +
+                                        " is " + String.format("%.2f", billingUpdateInfo.CalculateBilling()) + "$",
+                                Toast.LENGTH_SHORT).show();
+
+                        //Update the array element
+                        all_billingRecords[currentIndex].setClient_id(billingUpdateInfo.getClient_id());
+                        all_billingRecords[currentIndex].setClient_name(billingUpdateInfo.getClient_name());
+                        all_billingRecords[currentIndex].setProduct_name(billingUpdateInfo.getProduct_name());
+                        all_billingRecords[currentIndex].setPrd_price(billingUpdateInfo.getPrd_price());
+                        all_billingRecords[currentIndex].setPrd_qty(billingUpdateInfo.getPrd_qty());
+                    }
+
+                }
+            }
+    );
 }

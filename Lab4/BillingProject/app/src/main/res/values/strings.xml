@@ -29,4 +29,7 @@
     <string name="billing_delete_button">Billing Delete</string>
     <string name="billing_search_button">Billing Search</string>
     <string name="billing_view_button">Billing View</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

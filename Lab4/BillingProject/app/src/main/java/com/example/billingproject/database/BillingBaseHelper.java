@@ -4,12 +4,15 @@ import static com.example.billingproject.database.BillingDbSchema.BillingTable;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import com.example.billingproject.Billing;
+
+import java.util.ArrayList;
 
 public class BillingBaseHelper extends SQLiteOpenHelper {
 
@@ -28,12 +31,12 @@ public class BillingBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE " + BillingDbSchema.BillingTable.NAME + "(" +
+        db.execSQL("CREATE TABLE " + BillingTable.NAME + "(" +
                 BillingTable.Cols.CLIENT_ID + "," +
                 BillingTable.Cols.CLIENT_NAME + "," +
                 BillingTable.Cols.PRODUCT_NAME + "," +
                 BillingTable.Cols.PRD_PRICE + "," +
-                BillingTable.Cols.PRD_QTY);
+                BillingTable.Cols.PRD_QTY + ")");
     }
 
     @Override
@@ -68,5 +71,54 @@ public class BillingBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Read/Search
+    public ArrayList<Billing> readBillingDetails()
+    {
+        //Reading data from database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //Use cursor as a Data Structure
+        Cursor cursorBilling = db.rawQuery("SELECT * FROM " + BillingTable.NAME, null);
+
+        //Create ArrayList billingModelArrayList
+        ArrayList<Billing> billingModelArrayList = new ArrayList<>();
+
+        //Moving cursor to first position
+        if(cursorBilling.moveToFirst())
+        {
+            do{
+                //Populate ArrayList billingModelArrayList
+                billingModelArrayList.add(new Billing(cursorBilling.getInt(0),
+                        cursorBilling.getString(1), cursorBilling.getString(2),
+                        cursorBilling.getDouble(3), cursorBilling.getInt(4)));
+            }
+            while(cursorBilling.moveToNext());
+        }
+        //Close cursor
+        cursorBilling.close();
+        return billingModelArrayList;
+    }
+
+    //Update
+    public void updateBilling (Billing billing)
+    {
+        String client_idString = String.valueOf(billing.getClient_id());
+        //Creating values from ContentValues
+        ContentValues values = getContentValues(billing);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update(BillingTable.NAME, values, BillingTable.Cols.CLIENT_ID + "=?",
+                new String[] {client_idString});
+    }
+
+    //Delete
+    public void deleteBilling (Billing billing)
+    {
+        String client_idString = String.valueOf(billing.getClient_id());
+        //Creating values from ContentValues
+        ContentValues values = getContentValues(billing);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(BillingTable.NAME,BillingTable.Cols.CLIENT_ID + "=?",
+                new String[] {client_idString});
+    }
 
 }
