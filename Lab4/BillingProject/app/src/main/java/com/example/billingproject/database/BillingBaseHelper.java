@@ -99,6 +99,26 @@ public class BillingBaseHelper extends SQLiteOpenHelper {
         return billingModelArrayList;
     }
 
+    public Billing readBillingDetailsById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + BillingTable.NAME + " WHERE " + BillingTable.Cols.CLIENT_ID + "=?", new String[]{String.valueOf(id)});
+
+        Billing billing = null;
+
+        if (cursor.moveToFirst()) {
+            billing = new Billing(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getDouble(3),
+                    cursor.getInt(4));
+        }
+
+        cursor.close();
+        return billing;
+    }
+
+
     //Update
     public void updateBilling (Billing billing)
     {

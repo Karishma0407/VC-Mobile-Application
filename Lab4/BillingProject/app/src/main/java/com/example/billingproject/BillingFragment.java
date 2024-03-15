@@ -73,6 +73,19 @@ public class BillingFragment extends Fragment {
         prdPriceRetrieved = getActivity().getIntent().getDoubleExtra(EXTRA_PRODUCT_PRICE, 0.0);
         prdQtyRetrieved = getActivity().getIntent().getIntExtra(EXTRA_PRODUCT_QTY, 0);
 
+        // Create an instance of BillingBaseHelper
+        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(getContext());
+
+        // Create a new Billing object with the retrieved data
+        Billing newBilling = new Billing();
+        newBilling.setClient_id(clientIdRetrieved);
+        newBilling.setClient_name(clientNameRetrieved);
+        newBilling.setProduct_name(prdNameRetrieved);
+        newBilling.setPrd_price(prdPriceRetrieved);
+        newBilling.setPrd_qty(prdQtyRetrieved);
+
+        // Add the new billing details to the database
+        billingBaseHelper.addNewBillingDetails(newBilling);
 
     } //end of onCreate()
 
@@ -81,10 +94,9 @@ public class BillingFragment extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-//        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(context);
+        // Create an instance of BillingBaseHelper
         BillingBaseHelper billingBaseHelper = new BillingBaseHelper(getContext());
-
-
+        
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_billing, container, false);
 
@@ -107,6 +119,8 @@ public class BillingFragment extends Fragment {
         //Get the view of product_qty_edit_view_billingA
         prdQtyEditText = (EditText) v.findViewById(R.id.product_qty_edit_view_billingA);
         prdQtyEditText.setText(prdQtyRetrieved + "");
+
+
 
         //Get the view of billing_update_button
         billingUpdateButton = (Button) v.findViewById(R.id.billing_update_button);
@@ -145,8 +159,19 @@ public class BillingFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                billingBaseHelper.readBillingDetails();
-                Toast.makeText(getActivity(), "Read", Toast.LENGTH_SHORT).show();
+                int clientIdToSearch = Integer.parseInt(clientIdEditText.getText().toString());
+                Billing billing = billingBaseHelper.readBillingDetailsById(clientIdToSearch);
+                if (billing != null) {
+                    // Display the found billing details
+                    clientIdEditText.setText(String.valueOf(billing.getClient_id()));
+                    clientNameEditText.setText(billing.getClient_name());
+                    prdNameEditText.setText(billing.getProduct_name());
+                    prdPriceEditText.setText(String.valueOf(billing.getPrd_price()));
+                    prdQtyEditText.setText(String.valueOf(billing.getPrd_qty()));
+                } else {
+                    // Show a message indicating no record found
+                    Toast.makeText(getActivity(), "No record found with ID: " + clientIdToSearch, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
