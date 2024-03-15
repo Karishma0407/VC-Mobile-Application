@@ -84,6 +84,7 @@ public class BillingActivity extends AppCompatActivity {
                         prdNameEditText.getText().toString(),
                         Double.parseDouble(prdPriceEditText.getText().toString()),
                         Integer.parseInt(prdQtyEditText.getText().toString()));
+
             }
         });
     } //end of onCreate()

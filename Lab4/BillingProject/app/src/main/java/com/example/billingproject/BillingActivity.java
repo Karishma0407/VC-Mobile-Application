@@ -21,8 +21,8 @@ public class BillingActivity extends AppCompatActivity {
         //Use FragmentManager to add CourseFragment to fragment_container
         //of MainActivity
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragment_containerBilling);
 
+        Fragment fragment = fm.findFragmentById(R.id.fragment_containerBilling);
         if(fragment == null)
         {
             fragment = new BillingFragment();

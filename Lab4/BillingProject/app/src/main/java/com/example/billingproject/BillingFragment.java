@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ public class BillingFragment extends Fragment {
     private Button billingViewButton;
 
     ArrayList<Billing> billingModelArrayList;
+    Context context;
 
     int clientIdRetrieved;
     String clientNameRetrieved;
@@ -78,6 +81,8 @@ public class BillingFragment extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(context);
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_billing, container, false);
 
@@ -107,27 +112,54 @@ public class BillingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Update Database
-
                 //Coding updated Billing info as extra parameter
                 setBillingUpdateCodeResult(Integer.parseInt(clientIdEditText.getText().toString()),
                         clientNameEditText.getText().toString(),
                         prdNameEditText.getText().toString(),
                         Double.parseDouble(prdPriceEditText.getText().toString()),
                         Integer.parseInt(prdQtyEditText.getText().toString()));
-
+                Toast.makeText(getActivity(), clientIdRetrieved+ "Updated", Toast.LENGTH_SHORT).show();
 
             }
         });
 
         //Get the view of billing_delete_button
+        billingDeleteButton = (Button) v.findViewById(R.id.billing_delete_button);
+        billingDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Delete from Database
+                // You need to implement a method to delete the record using the client ID
+                int clientIdToDelete = Integer.parseInt(clientIdEditText.getText().toString());
+                billingBaseHelper.deleteBilling(new Billing(clientIdToDelete, null, null, 0.0, 0));
+                Toast.makeText(getActivity(), clientIdToDelete + "Deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //Get the view of billing_search_button
+        billingSearchButton = (Button) v.findViewById(R.id.billing_search_button);
+        billingSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                billingBaseHelper.readBillingDetails();
+                Toast.makeText(getActivity(), "Read", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //Get the view of billing_view_button
         billingViewButton = (Button) v.findViewById(R.id.billing_view_button);
         billingViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Replace BillingFragment with BillingViewFragment
+                FragmentManager fm = getParentFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.fragment_containerBilling, new BillingViewFragment());
+                transaction.addToBackStack(null); //Allow user to navigate back
+                transaction.commit();
 
             }
         });

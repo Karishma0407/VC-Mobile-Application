@@ -6,17 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/coursetoolbar"
+        android:layout_width="0dp"
+        android:layout_height="66dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/course_text_view"
         android:layout_width="300dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="560dp"
         android:text="@string/course_text_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintTop_toBottomOf="@+id/coursetoolbar"
+        app:layout_constraintVertical_bias="0.465" />
 
     <TextView
         android:id="@+id/courseTotalFees_text_view"
@@ -59,28 +75,60 @@
         app:layout_constraintStart_toStartOf="@+id/courseList_scroll"
         app:layout_constraintTop_toBottomOf="@+id/courseList_scroll" />
 
+    <LinearLayout
+        android:id="@+id/linearlayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/courseTotalFees_button"
+        app:layout_constraintStart_toStartOf="@+id/courseTotalFees_button"
+        app:layout_constraintTop_toBottomOf="@+id/courseTotalFees_button" >
+
     <Button
         android:id="@+id/courseNext_button"
-        android:layout_width="235dp"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
+        android:text="@string/courseNext_button"/>
+
+        <Button
+            android:id="@+id/course_link_button"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:text="@string/course_link_button"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/courseNext_button"
-        app:layout_constraintEnd_toEndOf="@+id/courseTotalFees_button"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/courseTotalFees_button"
-        app:layout_constraintTop_toBottomOf="@+id/courseTotalFees_button" />
+        app:layout_constraintEnd_toEndOf="@+id/linearlayout1"
+        app:layout_constraintStart_toStartOf="@+id/linearlayout1"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout1">
 
     <Button
         android:id="@+id/course_detail_button"
-        android:layout_width="235dp"
+        android:layout_width="120dp"
         android:layout_height="70dp"
-        android:layout_marginTop="20dp"
         android:text="@string/course_detail_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/courseNext_button"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/courseNext_button"
-        app:layout_constraintTop_toBottomOf="@+id/courseNext_button"
-        app:layout_constraintVertical_bias="0.038" />
+        />
+
+        <Button
+            android:id="@+id/start_service_button"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="@string/start_service_button"
+            />
+
+        <Button
+            android:id="@+id/stop_service_button"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="@string/stop_service_button"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,23 @@
 package com.example.courseproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.courseproject.database.CourseBaseHelper;
@@ -24,6 +32,9 @@ public class CourseFragment extends Fragment {
     private Button courseNext_Button;
     private Button courseDetailButton;
     private TextView courseListTextView;
+    private Button startService_button;
+    private Button stopService_button;
+    private Button courseLink_button;
 
     private int currentIndex = 0;
     public static String TAG="Course Project";
@@ -38,6 +49,9 @@ public class CourseFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         Course.credits=3;
+
+        //Fragment will receive callback from FragmentManager if
+        setHasOptionsMenu(true);
 
         //Should be retrieved from the database
         Course courseRecord1 = new Course("MIS 101", "Intro to Info System", 140);
@@ -77,6 +91,13 @@ public class CourseFragment extends Fragment {
 //        View v = super.onCreateView(inflater, container, savedInstanceState);
 
         View v = inflater.inflate(R.layout.fragment_course, container, false);
+
+        //Get the view of coursetoolbar
+        Toolbar courseToolbar = (Toolbar) v.findViewById(R.id.coursetoolbar);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(courseToolbar);
+
 
         //Get the view of courseText_View
         courseText_View = (TextView) v.findViewById(R.id.course_text_view);
@@ -131,6 +152,105 @@ public class CourseFragment extends Fragment {
             }
         });
 
+        //Get the view of start_service_button
+        startService_button = (Button) v.findViewById(R.id.start_service_button);
+        startService_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Start Android Service Media Player
+                getActivity().startService(new Intent(getActivity(), CourseService.class));
+            }
+        });
+
+        //Get the view of stop_service_button
+        stopService_button = (Button) v.findViewById(R.id.stop_service_button);
+        stopService_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Stop Android Service Media Player
+                getActivity().stopService(new Intent(getActivity(), CourseService.class));
+            }
+        });
+
+        //Get the view of course_link_button
+        courseLink_button = (Button) v.findViewById(R.id.course_link_button);
+        courseLink_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Use Implicit Intent
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.vaniercollege.qc.ca/"));
+                startActivity(intent);
+            }
+        });
+
         return v;
+    }
+
+    public void onCreateOptionsMenu(@Nullable Menu menu, @Nullable MenuInflater inflater){
+
+        super.onCreateOptionsMenu(menu, inflater);
+
+        //Inflate the menu defined in menu resource
+        inflater.inflate(R.menu.menu_course, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        Intent intent;
+
+        if(id == R.id.courseoptionitem1)
+        {
+            Toast.makeText(context, "Item 1 selected", Toast.LENGTH_SHORT).show();
+            //start new Activity CourseMapActivity
+            intent = new Intent(getActivity(), CourseMapActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(id == R.id.courseoptionitem2)
+        {
+            Toast.makeText(context, "Item 2 selected", Toast.LENGTH_SHORT).show();
+            //start new Activity CourseContentActivity
+            intent = new Intent(getActivity(), CourseContentActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(id == R.id.courseoptionitem3)
+        {
+            Toast.makeText(context, "Item 3 selected", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if(id == R.id.courseoptionitem4)
+        {
+            Toast.makeText(context, "Item 4 selected", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if(id == R.id.courseoptionitem5)
+        {
+            Toast.makeText(context, "Item 5 selected", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        /*
+        switch (id)
+        {
+            case R.id.courseoptionitem1:
+                Toast.makeText(context, "Item 1 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.courseoptionitem2:
+                Toast.makeText(context, "Item 2 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.courseoptionitem3:
+                Toast.makeText(context, "Item 3 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.courseoptionitem4:
+                Toast.makeText(context, "Item 4 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.courseoptionitem5:
+                Toast.makeText(context, "Item 5 selected", Toast.LENGTH_SHORT).show();
+                return true;
+        }*/
+        return super.onOptionsItemSelected(item);
     }
 }

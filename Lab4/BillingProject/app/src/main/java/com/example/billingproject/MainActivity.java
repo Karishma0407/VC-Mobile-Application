@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Use FragmentManager to add CourseFragment to fragment_container
-        //of MainActivity
+        //Use FragmentManager to add CourseFragment to
+        // fragment_container of MainActivity
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
