@@ -81,7 +81,9 @@ public class BillingFragment extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(context);
+//        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(context);
+        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(getContext());
+
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_billing, container, false);
@@ -118,7 +120,7 @@ public class BillingFragment extends Fragment {
                         prdNameEditText.getText().toString(),
                         Double.parseDouble(prdPriceEditText.getText().toString()),
                         Integer.parseInt(prdQtyEditText.getText().toString()));
-                Toast.makeText(getActivity(), clientIdRetrieved+ "Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), clientIdRetrieved+ " Updated", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -133,7 +135,7 @@ public class BillingFragment extends Fragment {
                 // You need to implement a method to delete the record using the client ID
                 int clientIdToDelete = Integer.parseInt(clientIdEditText.getText().toString());
                 billingBaseHelper.deleteBilling(new Billing(clientIdToDelete, null, null, 0.0, 0));
-                Toast.makeText(getActivity(), clientIdToDelete + "Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), clientIdToDelete + " Deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
