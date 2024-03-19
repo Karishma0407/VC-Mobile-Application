@@ -71,7 +71,7 @@ public class BillingBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    //Read/Search
+    //Read
     public ArrayList<Billing> readBillingDetails()
     {
         //Reading data from database
@@ -99,26 +99,56 @@ public class BillingBaseHelper extends SQLiteOpenHelper {
         return billingModelArrayList;
     }
 
+    //Search
+    public Billing searchBilling(int clientId)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorBilling = db.rawQuery("SELECT * FROM " + BillingTable.NAME + " WHERE " +
+                BillingTable.Cols.CLIENT_ID + "=" + String.valueOf(clientId), null);
+
+        Billing billingModel = null;
+
+        if(cursorBilling.moveToFirst())
+        {
+           /* billingModel = new Billing(
+                    cursorBilling.getInt(cursorBilling.getColumnIndex(BillingTable.Cols.CLIENT_ID)),
+                    cursorBilling.getString(cursorBilling.getColumnIndex(BillingTable.Cols.CLIENT_NAME)),
+                    cursorBilling.getString(cursorBilling.getColumnIndex(BillingTable.Cols.PRODUCT_NAME)),
+                    cursorBilling.getDouble(cursorBilling.getColumnIndex(BillingTable.Cols.PRD_PRICE)),
+                    cursorBilling.getInt(cursorBilling.getColumnIndex(BillingTable.Cols.PRD_QTY))
+                    );*/
+        }
+        cursorBilling.close();
+        db.close();
+
+        return billingModel;
+    }
+
     //Update
     public void updateBilling (Billing billing)
     {
-        String client_idString = String.valueOf(billing.getClient_id());
+        String client_idString = Integer.toString(billing.getClient_id());
+
         //Creating values from ContentValues
         ContentValues values = getContentValues(billing);
+
         SQLiteDatabase db = this.getWritableDatabase();
-        db.update(BillingTable.NAME, values, BillingTable.Cols.CLIENT_ID + "=?",
-                new String[] {client_idString});
+        db.update(BillingTable.NAME, values, BillingTable.Cols.CLIENT_ID +"="+ client_idString,null);
+//        db.update(BillingTable.NAME, values, BillingTable.Cols.CLIENT_ID + "=?",
+//                new String[] {client_idString});
+        //close db
+        db.close();
     }
 
     //Delete
     public void deleteBilling (Billing billing)
     {
-        String client_idString = String.valueOf(billing.getClient_id());
-        //Creating values from ContentValues
-        ContentValues values = getContentValues(billing);
+        String client_idString = Integer.toString(billing.getClient_id());
+
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(BillingTable.NAME,BillingTable.Cols.CLIENT_ID + "=?",
-                new String[] {client_idString});
+        db.delete(BillingTable.NAME,BillingTable.Cols.CLIENT_ID + "=" + client_idString, null);
+        db.close();
     }
 
 }

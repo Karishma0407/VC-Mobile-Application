@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -73,17 +74,16 @@ public class BillingFragment extends Fragment {
         prdPriceRetrieved = getActivity().getIntent().getDoubleExtra(EXTRA_PRODUCT_PRICE, 0.0);
         prdQtyRetrieved = getActivity().getIntent().getIntExtra(EXTRA_PRODUCT_QTY, 0);
 
+        context = getContext().getApplicationContext();
 
     } //end of onCreate()
 
     @Nullable
     @Override
-    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container,
+                             @NonNull Bundle savedInstanceState) {
 
-//        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(context);
-        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(getContext());
-
+        BillingBaseHelper billingBaseHelper = new BillingBaseHelper(context);
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_billing, container, false);
@@ -115,11 +115,21 @@ public class BillingFragment extends Fragment {
             public void onClick(View view) {
                 //Update Database
                 //Coding updated Billing info as extra parameter
-                setBillingUpdateCodeResult(Integer.parseInt(clientIdEditText.getText().toString()),
+                /*setBillingUpdateCodeResult(Integer.parseInt(clientIdEditText.getText().toString()),
                         clientNameEditText.getText().toString(),
                         prdNameEditText.getText().toString(),
                         Double.parseDouble(prdPriceEditText.getText().toString()),
                         Integer.parseInt(prdQtyEditText.getText().toString()));
+*/
+                Billing billing = new Billing(Integer.parseInt(clientIdEditText.getText().toString()),
+                        clientNameEditText.getText().toString(),
+                        prdNameEditText.getText().toString(),
+                        Double.parseDouble(prdPriceEditText.getText().toString()),
+                        Integer.parseInt(prdQtyEditText.getText().toString()));
+
+                BillingBaseHelper billingBaseHelper1 = new BillingBaseHelper(context);
+                billingBaseHelper1.updateBilling(billing);
+
                 Toast.makeText(getActivity(), clientIdRetrieved+ " Updated", Toast.LENGTH_SHORT).show();
 
             }
@@ -133,9 +143,20 @@ public class BillingFragment extends Fragment {
 
                 // Delete from Database
                 // You need to implement a method to delete the record using the client ID
-                int clientIdToDelete = Integer.parseInt(clientIdEditText.getText().toString());
+              /*  int clientIdToDelete = Integer.parseInt(clientIdEditText.getText().toString());
                 billingBaseHelper.deleteBilling(new Billing(clientIdToDelete, null, null, 0.0, 0));
                 Toast.makeText(getActivity(), clientIdToDelete + " Deleted", Toast.LENGTH_SHORT).show();
+           */
+
+                Billing billing = new Billing(Integer.parseInt(clientIdEditText.getText().toString()),
+                        clientNameEditText.getText().toString(),
+                        prdNameEditText.getText().toString(),
+                        Double.parseDouble(prdPriceEditText.getText().toString()),
+                        Integer.parseInt(prdQtyEditText.getText().toString()));
+
+                BillingBaseHelper billingBaseHelper1 = new BillingBaseHelper(context);
+                billingBaseHelper1.deleteBilling(billing);
+
             }
         });
 
