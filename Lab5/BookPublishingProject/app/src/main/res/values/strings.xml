@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BookPublishingProject</string>
+
+    <string name="pubId_textView_label">Pub Id</string>
+    <string name="pubId_textView_value"></string>
+    <string name="pubName_textView_label">Pub Name</string>
+    <string name="pubName_textView_value"></string>
+    <string name="pubAdd_textView_label">Pub Add</string>
+    <string name="pubAdd_textView_value"></string>
+    <string name="prevPub_button">Prev Pub</string>
+    <string name="nextPub_button">Next Pub</string>
+    <string name="pubDetails_button">Publisher Details</string>
+    <string name="showBook_button">Show Book</string>
+</resources>
