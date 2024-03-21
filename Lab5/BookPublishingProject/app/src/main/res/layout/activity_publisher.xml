@@ -6,4 +6,130 @@
     android:layout_height="match_parent"
     tools:context=".PublisherActivity">
 
+    <TextView
+        android:id="@+id/pubId_textView_label"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/pubId_textView_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
+
+
+    <EditText
+        android:id="@+id/pubId_editText"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/pubId_editText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pubId_textView_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
+
+    <TextView
+        android:id="@+id/pubName_textView_label"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/pubName_textView_label"
+        app:layout_constraintStart_toStartOf="@+id/pubId_textView_label"
+        app:layout_constraintTop_toBottomOf="@+id/pubId_textView_label" />
+
+    <EditText
+        android:id="@+id/pubName_editText"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/pubName_editText"
+        app:layout_constraintEnd_toEndOf="@+id/pubId_editText"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toEndOf="@+id/pubName_textView_label"
+        app:layout_constraintTop_toBottomOf="@+id/pubId_editText" />
+
+    <TextView
+        android:id="@+id/pubAdd_textView_label"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:text="@string/pubAdd_textView_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pubName_textView_label"
+        app:layout_constraintTop_toBottomOf="@+id/pubName_textView_label"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <EditText
+        android:id="@+id/pubAdd_editText"
+        android:layout_width="147dp"
+        android:layout_height="51dp"
+        android:text="@string/pubAdd_editText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pubName_editText"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toEndOf="@+id/pubAdd_textView_label"
+        app:layout_constraintTop_toBottomOf="@+id/pubName_editText"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <Button
+        android:id="@+id/updatePub_button"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:text="@string/updatePub_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pubAdd_editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pubAdd_textView_label"
+        app:layout_constraintTop_toBottomOf="@+id/pubAdd_textView_label"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <Button
+        android:id="@+id/clearPub_button"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/clearPub_button"
+        app:layout_constraintEnd_toEndOf="@+id/updatePub_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/updatePub_button"
+        app:layout_constraintTop_toBottomOf="@+id/updatePub_button" />
+
+    <Button
+        android:id="@+id/addPub_button"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:text="@string/addPub_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/clearPub_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/clearPub_button"
+        app:layout_constraintTop_toBottomOf="@+id/clearPub_button"
+        app:layout_constraintVertical_bias="0.033" />
+
+    <Button
+        android:id="@+id/searchPub_button"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:text="@string/searchPub_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/addPub_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addPub_button"
+        app:layout_constraintTop_toBottomOf="@+id/addPub_button"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <Button
+        android:id="@+id/deletePub_button"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:text="@string/deletePub_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/searchPub_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/searchPub_button"
+        app:layout_constraintTop_toBottomOf="@+id/searchPub_button"
+        app:layout_constraintVertical_bias="0.061" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
