@@ -21,8 +21,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.courseproject.database.CourseBaseHelper;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CourseFragment extends Fragment {
 
@@ -35,12 +43,20 @@ public class CourseFragment extends Fragment {
     private Button startService_button;
     private Button stopService_button;
     private Button courseLink_button;
+    //Lab 6
+    private Button logoutButton;
+    private Button writeToFirebaseButton;
+    private Button readFromFirebaseButton;
+
+    DatabaseReference databaseRef;
 
     private int currentIndex = 0;
     public static String TAG="Course Project";
     public static String KEY_INDEX="index";
 
     public Course[] all_courses;
+    Map<String, Object> coursehm;
+
     Context context;
     ArrayList<Course> courseModelArrayList;
 
@@ -65,6 +81,18 @@ public class CourseFragment extends Fragment {
         //Data structure: Array of Objects
         all_courses = new Course[]{courseRecord1, courseRecord2, courseRecord3, courseRecord4,
                 courseRecord5, courseRecord6, courseRecord7} ;
+
+        //Lab 6:
+        databaseRef = FirebaseDatabase.getInstance().getReference();
+
+        coursehm = new HashMap<>();
+        coursehm.put(courseRecord1.getCourse_no(), courseRecord1);
+        coursehm.put(courseRecord2.getCourse_no(), courseRecord2);
+        coursehm.put(courseRecord3.getCourse_no(), courseRecord3);
+        coursehm.put(courseRecord4.getCourse_no(), courseRecord4);
+        coursehm.put(courseRecord5.getCourse_no(), courseRecord5);
+        coursehm.put(courseRecord6.getCourse_no(), courseRecord6);
+        coursehm.put(courseRecord7.getCourse_no(), courseRecord7);
 
         context = getContext().getApplicationContext();
         CourseBaseHelper courseBaseHelper = new CourseBaseHelper(context);
@@ -180,6 +208,57 @@ public class CourseFragment extends Fragment {
                 //Use Implicit Intent
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.vaniercollege.qc.ca/"));
                 startActivity(intent);
+            }
+        });
+
+        //Lab 6: EventListener of logout button
+        logoutButton = (Button) v.findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), StartActivity.class));
+            }
+        });
+
+        writeToFirebaseButton = (Button) v.findViewById(R.id.writeToFirebase_button);
+        writeToFirebaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Store the data into Firebase database
+//                databaseRef.child("Courses").child(all_courses[0].getCourse_no())
+//                        .setValue(all_courses[0]);
+                databaseRef.child("Courses").updateChildren(coursehm);
+
+                Toast.makeText(getActivity(), "Map added to Firebase", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        readFromFirebaseButton = (Button) v.findViewById(R.id.readFromFirebase_button);
+        readFromFirebaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Read the data from Firebase database and write to scroll textView
+                databaseRef.child("Courses").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String allcourses = "";
+
+                        for (DataSnapshot ss:snapshot.getChildren())
+                        {
+                            allcourses += ss.getValue(Course.class).toString();
+                        }
+                        //Get the view of courseList_text_view
+                        courseListTextView = (TextView) v.findViewById(R.id.courseList_text_view);
+                        courseListTextView.setText(allcourses);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
