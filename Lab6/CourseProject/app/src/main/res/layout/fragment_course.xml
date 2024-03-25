@@ -32,7 +32,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coursetoolbar"
-        app:layout_constraintVertical_bias="0.465" />
+        app:layout_constraintVertical_bias="0.137" />
 
     <TextView
         android:id="@+id/courseTotalFees_text_view"
@@ -130,5 +130,36 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <LinearLayout
+        android:id="@+id/linearlayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearlayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearlayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout2">
+
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="Logout" />
+
+        <Button
+            android:id="@+id/writeToFirebase_button"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="Write to Firebase" />
+
+        <Button
+            android:id="@+id/readFromFirebase_button"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="Read From Firebase" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
