@@ -1,6 +1,8 @@
 package com.example.salonproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Get the FragmentManager and start a transaction
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, facialFragment)
+                        .add(R.id.fragment_container, facialFragment)
                         .addToBackStack(null) // This line allows the user to navigate back to the previous fragment
                         .commit();
             }
