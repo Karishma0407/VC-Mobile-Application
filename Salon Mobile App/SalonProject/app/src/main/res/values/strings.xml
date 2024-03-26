@@ -20,5 +20,7 @@
 
     <!--    HomePageActivity-->
     <string name="appointment_button">Book an Appointment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
