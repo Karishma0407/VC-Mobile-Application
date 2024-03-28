@@ -32,7 +32,7 @@ public class CourseContentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Add the url of your web service project endpoints
-                String url = "";
+                String url = "http://localhost:8080/customer/find?id=1";
 
                 new AsyncHttpClient().get(url, new AsyncHttpResponseHandler() {
                     @Override
