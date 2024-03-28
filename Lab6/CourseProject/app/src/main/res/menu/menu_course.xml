@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/courseoptionitem3"
-        android:title="Item" />
+        android:title="Course Operation" />
     <item
         android:id="@+id/courseoptionitem4"
         android:title="Item" />

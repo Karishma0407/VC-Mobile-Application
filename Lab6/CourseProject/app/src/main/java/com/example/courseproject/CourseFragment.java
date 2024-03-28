@@ -298,6 +298,9 @@ public class CourseFragment extends Fragment {
         else if(id == R.id.courseoptionitem3)
         {
             Toast.makeText(context, "Item 3 selected", Toast.LENGTH_SHORT).show();
+            //start new Activity CourseOperationActivity
+            intent = new Intent(getActivity(), CourseOperationActivity.class);
+            startActivity(intent);
             return true;
         }
         else if(id == R.id.courseoptionitem4)

@@ -16,5 +16,8 @@
     <string name="course_link_button">Course Link</string>
     <string name="title_activity_course_map">CourseMapActivity</string>
 
+    <string name="course_operation_scroll_view"></string>
+    <string name="add_course_button">Add Course</string>
+    <string name="search_course_button">Search Course</string>
 
 </resources>
