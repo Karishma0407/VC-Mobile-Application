@@ -11,12 +11,15 @@
         android:id="@+id/signuptitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign up"
-        android:textSize="36dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="55dp"
         android:gravity="center"
-        android:layout_margin="55dp"/>
+        android:text="Sign up"
+        android:textColor="@color/white"
+        android:textSize="36dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/userfname_edit_text"

@@ -18,9 +18,23 @@
     <string name="user_pwd_edit_text">Password</string>
     <string name="signup_button">Register</string>
 
-    <!--    HomePageActivity-->
-    <string name="appointment_button">Book an Appointment</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+<!--    Fragment Salon -->
+    <string name="facial_image_button">Facial</string>
+    <string name="eyebrow_image_button">Eyebrow</string>
+    <string name="waxing_image_button">Waxing</string>
+    <string name="haircut_image_button">Haircut</string>
+
+<!--    Facial Fragment-->
+    <string-array name="spinner_array_facial_services">
+        <item>Facial Services</item>
+        <item>Gold Facial</item>
+        <item>Fruit Facial</item>
+        <item>Herbal Facial</item>
+        <item>Face Bleach</item>
+    </string-array>
+
+    <string name="start_service_button">Start Video</string>
+    <string name="stop_service_button">Stop Video</string>
+
 
 </resources>

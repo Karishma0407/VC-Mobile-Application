@@ -22,21 +22,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Get the resources
-        facialButton = (ImageButton) findViewById(R.id.facial_imageButton);
-        facialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
-                // Create a new instance of FacialFragment
-                FacialFragment facialFragment = new FacialFragment();
+        if(fragment == null)
+        {
+            fragment = new SalonFragment();
+            fm.beginTransaction()
+                    .add(R.id.fragment_container, fragment)
+                    .commit();
+        }
 
-                // Get the FragmentManager and start a transaction
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, facialFragment)
-                        .addToBackStack(null) // This line allows the user to navigate back to the previous fragment
-                        .commit();
-            }
-        });
     }
 }
