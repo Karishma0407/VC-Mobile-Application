@@ -13,6 +13,9 @@ import android.widget.ImageButton;
 public class SalonFragment extends Fragment implements View.OnClickListener {
 
     private ImageButton facialButton;
+    private ImageButton threadingButton;
+    private ImageButton waxingButton;
+    private ImageButton haircutButton;
 
     public SalonFragment() {
         // Required empty public constructor
@@ -31,10 +34,16 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_salon, container, false);
 
         //Initialize ImageButtons
-        facialButton = v.findViewById(R.id.facial_imageButton);
+        facialButton = v.findViewById(R.id.facial_image_button);
+        threadingButton = v.findViewById(R.id.threading_image_button);
+        waxingButton = v.findViewById(R.id.waxing_image_button);
+        haircutButton = v.findViewById(R.id.haircut_image_button);
 
         //Set click listeners
         facialButton.setOnClickListener(this);
+        threadingButton.setOnClickListener(this);
+        waxingButton.setOnClickListener(this);
+        haircutButton.setOnClickListener(this);
 
         return v;
     }
@@ -43,21 +52,19 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         Fragment fragment;
-        if(v.getId() == R.id.facial_imageButton){
+        if(v.getId() == R.id.facial_image_button){
             fragment = new FacialFragment();
-        } else {
+        } else if(v.getId() == R.id.threading_image_button){
+            fragment = new ThreadingFragment();
+        } else if(v.getId() == R.id.waxing_image_button){
+            fragment = new WaxingFragment();
+        } else if(v.getId() == R.id.haircut_image_button){
+            fragment = new HaircutFragment();
+        }
+        else {
             return;
         }
-    /*
-        switch (v.getId())
-        {
-            case R.id.facial_imageButton:
-                fragment = new FacialFragment();
-                break;
-            default:
-                return;
-        }
-    */
+
         //Replace current fragment with the selected one
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()

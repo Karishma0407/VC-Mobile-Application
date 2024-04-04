@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SalonProject</string>
 
-    <!--    MainActivity-->
+    <!--    LoginActivity-->
     <string name="email_text_view">Email</string>
     <string name="email_edit_text"></string>
     <string name="pwd_text_view">Password</string>
@@ -18,13 +18,13 @@
     <string name="user_pwd_edit_text">Password</string>
     <string name="signup_button">Register</string>
 
-<!--    Fragment Salon -->
+    <!--    Fragment Salon -->
     <string name="facial_image_button">Facial</string>
-    <string name="eyebrow_image_button">Eyebrow</string>
+    <string name="threading_image_button">Threading</string>
     <string name="waxing_image_button">Waxing</string>
     <string name="haircut_image_button">Haircut</string>
 
-<!--    Facial Fragment-->
+    <!--    Facial Fragment-->
     <string-array name="spinner_array_facial_services">
         <item>Facial Services</item>
         <item>Gold Facial</item>
@@ -35,6 +35,31 @@
 
     <string name="start_service_button">Start Video</string>
     <string name="stop_service_button">Stop Video</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Threading Fragment-->
+    <string-array name="spinner_array_threading_services">
+        <item>Threading Services</item>
+        <item>Eyebrows</item>
+        <item>Eyebrows Tinting</item>
+        <item>Upper Lip</item>
+        <item>Chin</item>
+        <item>Full Face</item>
+    </string-array>
+
+    <!--    Waxing Fragment-->
+    <string-array name="spinner_array_waxing_services">
+        <item>Waxing Services</item>
+        <item>Under Arms</item>
+        <item>Half Arms</item>
+        <item>Full Arms</item>
+        <item>Half Legs</item>
+        <item>Full Legs</item>
+        <item>Full Face</item>
+        <item>Full Bikini</item>
+        <item>Bikini Line</item>
+    </string-array>
 
 
 </resources>
