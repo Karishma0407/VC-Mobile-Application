@@ -23,6 +23,7 @@
     <string name="threading_image_button">Threading</string>
     <string name="waxing_image_button">Waxing</string>
     <string name="haircut_image_button">Haircut</string>
+    <string name="appointment_book_button">Book Appointment</string>
 
     <!--    Facial Fragment-->
     <string-array name="spinner_array_facial_services">

@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
     private ImageButton threadingButton;
     private ImageButton waxingButton;
     private ImageButton haircutButton;
+    private Button appointBook;
 
     private FirebaseAuth auth;
 
@@ -75,6 +77,19 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
         waxingButton.setOnClickListener(this);
         haircutButton.setOnClickListener(this);
 
+        //Get the view of appointment_book_button
+        appointBook = (Button) v.findViewById(R.id.appointment_book_button);
+        appointBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Go to new Activity
+                Intent intent = new Intent(getActivity(), AppointmentBookingActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         return v;
     }
 
@@ -100,12 +115,11 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
-//                .addToBackStack(null)
+                .addToBackStack(null)
                 .commit();
     }
 
     //-------------------- Display Menu bar --------------------
-
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);

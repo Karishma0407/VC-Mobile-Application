@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         pwdEditText = findViewById(R.id.pwd_edit_text);
 
         //Get the view of signin_button
-        signInButton = (Button) findViewById(R.id.playVideo_button);
+        signInButton = (Button) findViewById(R.id.appointment_book_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,5 +81,16 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Test if current user is still logged in, if so, start MainActivity
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null)
+        {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
     }
 }
