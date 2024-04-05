@@ -66,7 +66,8 @@ public class CourseFragment extends Fragment {
 
         Course.credits=3;
 
-        //Fragment will receive callback from FragmentManager if
+        //Fragment will receive callback from FragmentManager
+        // to fire onCreateOptionMenu
         setHasOptionsMenu(true);
 
         //Should be retrieved from the database
