@@ -62,5 +62,16 @@
         <item>Bikini Line</item>
     </string-array>
 
+    <!--    Appointment Booking Fragment-->
+    <string name="select_date_button">Select Date</string>
+    <string name="select_time_button">Select Time</string>
+    <string name="services">Facial\nThreading\n</string>
+    <string-array name="spinner_array_services">
+        <item>Services</item>
+        <item>Facial</item>
+        <item>Threading</item>
+        <item>Waxing</item>
+        <item>Haircut</item>
+    </string-array>
 
 </resources>

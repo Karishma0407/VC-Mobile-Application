@@ -18,11 +18,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SalonFragment extends Fragment implements View.OnClickListener {
 
@@ -90,6 +97,39 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        //Get the view of userName_textView
+        TextView userNameTextView = (TextView) v.findViewById(R.id.userName_textView);
+
+        // Get the current user
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Check if the user is logged in
+        if(currentUser != null) {
+            // User is signed in
+            String userId = currentUser.getUid();
+
+            // Get a reference to the Firebase Realtime Database
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+
+            // Retrieve user information from the database
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        // Get user data
+                        String firstName = dataSnapshot.child("firstname").getValue(String.class);
+
+                        // Set the first name to the userNameTextView
+                        userNameTextView.setText(firstName);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getActivity(), "Failed to retrieve user information", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         return v;
     }
 
@@ -137,11 +177,13 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
         if(id == R.id.salonoptionitem1)
         {
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(context, "Logout Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), LoginActivity.class));
             //End the current activity
             requireActivity().finish();
             return true;
+        } else if (id == R.id.salonoptionitem2) {
+            startActivity(new Intent(getActivity(), FeedbackActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

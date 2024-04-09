@@ -121,7 +121,7 @@ public class FacialFragment extends Fragment {
         if(id == R.id.salonoptionitem1)
         {
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(context, "Logout Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), LoginActivity.class));
             //End the current activity
             requireActivity().finish();

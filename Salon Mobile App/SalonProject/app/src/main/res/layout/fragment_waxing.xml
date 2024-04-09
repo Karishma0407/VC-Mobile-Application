@@ -19,18 +19,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:layout_width="175dp"
-            android:layout_height="65dp"
-            android:text="Waxing"
-            android:textSize="25dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"/>
-
     </androidx.appcompat.widget.Toolbar>
 
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="144dp"
+        android:layout_height="45dp"
+        android:text="Waxing"
+        android:textColor="@color/my_primary"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/waxing_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/salonToolbar"
+        app:layout_constraintVertical_bias="0.441" />
 
     <TextView
         android:id="@+id/waxing_textView"
@@ -40,11 +45,11 @@
         android:text="Waxing is a method of semi-permanent hair removal which removes the hair from the root. New hairs will not grow back in the previously waxed area for two to eight weeks."
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/salonToolbar"
-        app:layout_constraintVertical_bias="0.062" />
+        app:layout_constraintVertical_bias="0.139" />
 
     <Spinner
         android:id="@+id/spinner_waxing_services"
@@ -56,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/waxing_textView"
         app:layout_constraintTop_toBottomOf="@+id/waxing_textView"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintVertical_bias="0.053" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutVideoButtons"

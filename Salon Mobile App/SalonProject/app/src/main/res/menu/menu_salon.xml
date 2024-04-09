@@ -10,7 +10,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/salonoptionitem2"
-        android:title="Item2" />
+        android:title="Feedback" />
     <item
         android:id="@+id/salonoptionitem3"
         android:title="Item3" />

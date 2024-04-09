@@ -4,4 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppointmentBookingActivity"/>
+    tools:context=".AppointmentBookingActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/salonToolbar"
+        android:layout_width="0dp"
+        android:layout_height="66dp"
+        android:background="@color/my_primary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="Book An Appointment"
+        android:textColor="@color/my_primary"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/salonToolbar"
+        app:layout_constraintVertical_bias="0.067" />
+
+
+    <TextView
+        android:id="@+id/userName_textView"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:hint="User Name"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/date_textview"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/date_textview"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:drawableEnd="@drawable/calendar_icon"
+        android:hint="Select Date"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userName_textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/userName_textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.221" />
+
+    <TextView
+        android:id="@+id/time_textview"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="40dp"
+        android:drawableEnd="@drawable/time_icon"
+        android:textSize="20sp"
+        android:hint="Select Time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/date_textview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/date_textview"
+        app:layout_constraintTop_toBottomOf="@+id/date_textview"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <Spinner
+        android:id="@+id/serviceSpinner"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/time_textview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/time_textview"
+        app:layout_constraintTop_toBottomOf="@+id/time_textview"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/book_now_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/my_primary"
+        android:text="Book Now"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/serviceSpinner"
+        app:layout_constraintStart_toStartOf="@+id/serviceSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/serviceSpinner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,12 +16,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HaircutFragment extends Fragment {
 
+    private VideoView videoView;
+    private Button startService_button;
+    private Button stopService_button;
     Context context;
 
     public HaircutFragment() {
@@ -50,6 +56,31 @@ public class HaircutFragment extends Fragment {
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(salonToolbar);
 
+
+        videoView = v.findViewById(R.id.videoView);
+        videoView.setVideoPath("android.resource://" +  getContext().getPackageName() + "/" + R.raw.haircutvideo);
+        MediaController mediaController = new MediaController(getContext());
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+
+        //Get the view of start_service_button
+        startService_button = (Button) v.findViewById(R.id.start_service_button);
+        startService_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoView.start();
+            }
+        });
+
+        //Get the view of stop_service_button
+        stopService_button = (Button) v.findViewById(R.id.stop_service_button);
+        stopService_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoView.pause();
+            }
+        });
+
         return v;
     }
 
@@ -70,7 +101,7 @@ public class HaircutFragment extends Fragment {
         if(id == R.id.salonoptionitem1)
         {
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(context, "Logout Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), LoginActivity.class));
             //End the current activity
             requireActivity().finish();

@@ -76,7 +76,7 @@ public class ThreadingFragment extends Fragment {
 
 
         videoView = v.findViewById(R.id.videoView);
-        videoView.setVideoPath("android.resource://" +  getContext().getPackageName() + "/" + R.raw.facialvideo);
+        videoView.setVideoPath("android.resource://" +  getContext().getPackageName() + "/" + R.raw.threadingvideo);
         MediaController mediaController = new MediaController(getContext());
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
@@ -119,7 +119,7 @@ public class ThreadingFragment extends Fragment {
         if(id == R.id.salonoptionitem1)
         {
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(context, "Logout Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Logout Successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), LoginActivity.class));
             //End the current activity
             requireActivity().finish();
