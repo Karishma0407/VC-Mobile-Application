@@ -184,6 +184,8 @@ public class SalonFragment extends Fragment implements View.OnClickListener {
             return true;
         } else if (id == R.id.salonoptionitem2) {
             startActivity(new Intent(getActivity(), FeedbackActivity.class));
+        } else if (id == R.id.salonoptionitem3) {
+            startActivity(new Intent(getActivity(), SalonLocationActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

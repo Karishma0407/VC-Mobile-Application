@@ -13,9 +13,7 @@
         android:title="Feedback" />
     <item
         android:id="@+id/salonoptionitem3"
-        android:title="Item3" />
-    <item
-        android:id="@+id/salonoptionitem4"
-        android:title="Item4" />
+        android:title="Location" />
+
 </menu>
 

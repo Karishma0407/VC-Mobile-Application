@@ -34,6 +34,8 @@ public class AppointmentBookingActivity extends AppCompatActivity {
     private TextView timeTextview;
     private Spinner serviceSpinner;
     private Button bookNowButton;
+
+    private TextView appointmentDetailsTextView;
     int cyear,cmonth,cday;
     int chour,cminut;
 
@@ -47,6 +49,7 @@ public class AppointmentBookingActivity extends AppCompatActivity {
         timeTextview = (TextView) findViewById(R.id.time_textview);
         serviceSpinner = findViewById(R.id.serviceSpinner);
         bookNowButton = findViewById(R.id.book_now_button);
+        appointmentDetailsTextView = (TextView) findViewById(R.id.appointment_details_textview);
 
         // Get the current user
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -161,11 +164,19 @@ public class AppointmentBookingActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+
+                        // Show appointment details
+                        String appointmentDetails = "Appointment: " + userName + " " + selectedService + " " + selectedDate + " " + selectedTime;
+
+                        appointmentDetailsTextView.setText(appointmentDetails);
+//                        appointmentDetailsTextView.setVisibility(View.VISIBLE);
+
                         Toast.makeText(AppointmentBookingActivity.this, "Appointment booked successfully!", Toast.LENGTH_SHORT).show();
                         // Clear the form after successful booking
                         dateTextview.setText("");
                         timeTextview.setText("");
                         serviceSpinner.setSelection(0); // Select the first item in the spinner
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

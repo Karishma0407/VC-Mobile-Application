@@ -104,8 +104,20 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/serviceSpinner"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="@+id/serviceSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/serviceSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/serviceSpinner"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/appointment_details_textview"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/serviceSpinner"
+        app:layout_constraintStart_toStartOf="@+id/serviceSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/book_now_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
